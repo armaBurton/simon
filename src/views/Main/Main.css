@@ -21,34 +21,73 @@
     grid-template-rows: 1fr 1fr;
 }
 
-.button {
+.game-button {
     min-height: 325px;
     max-width: 325px;
     max-height: 325px;
     min-width: 325px;
     z-index: 1;
+    cursor: pointer
 }
 
 .yellow {
     border-top-left-radius: 1000%;
     border-bottom-left-radius: 15%;
     border-top-right-radius: 15%;
-    background-color: yellow
+    background-color: var(--dim-yellow)
+}
+
+.yellow:hover {
+    background-color: var(--bright-yellow);
+}
+
+.yellow:active {
+    background-color: var(--press-yellow);
 }
 
 .red {
-    border-top-right-radius: 200%;
-    background-color: red;
+    border-top-right-radius: 1000%;
+    background-color: var(--dim-red);
+    border-bottom-right-radius: 15%;
+    border-top-left-radius: 15%;
+}
+
+.red:hover {
+    background-color: var(--bright-red);
+}
+
+.red:active {
+    background-color: var(--press-red);
 }
 
 .blue {
-    border-bottom-left-radius: 200%;
-    background-color: blue;
+    border-bottom-left-radius: 1000%;
+    background-color: var(--dim-blue);
+    border-top-left-radius: 15%;
+    border-bottom-right-radius: 15%;
+}
+
+.blue:hover {
+    background-color: var(--bright-blue);
+}
+
+.blue:active {
+    background-color: var(--press-blue);
 }
 
 .green {
-    border-bottom-right-radius: 200%;
-    background-color: green;
+    border-bottom-right-radius: 1000%;
+    background-color: var(--dim-green);
+    border-bottom-left-radius: 15%;
+    border-top-right-radius: 15%;
+}
+
+.green:hover {
+    background-color: var(--bright-green);
+}
+
+.green:active {
+    background-color: var(--press-green);
 }
 
 .center {

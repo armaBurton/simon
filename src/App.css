@@ -1,3 +1,18 @@
+:root {
+  --dim-red: #ff000080;
+  --dim-yellow: #ffff0080;
+  --dim-blue: #6666ff80;
+  --dim-green: #00ff0080;
+  --bright-red: #ff0000;
+  --bright-yellow: #ffff00;
+  --bright-blue: #6666ff;
+  --bright-green: #00ff00;
+  --press-red: #ff8080;
+  --press-yellow: #ffff80;
+  --press-blue: #b7b7ff;
+  --press-green: #80ff80;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
