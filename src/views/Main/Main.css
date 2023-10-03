@@ -14,18 +14,18 @@
     background-color: #111111;
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
+    align-content: center;
     justify-content: center;
-    gap: 10px;
+    gap: 30px;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
 }
 
 .button {
-    min-height: 355px;
-    max-width: 355px;
-    max-height: 355px;
-    min-width: 355px;
+    min-height: 325px;
+    max-width: 325px;
+    max-height: 325px;
+    min-width: 325px;
     z-index: 1;
 }
 
@@ -49,4 +49,16 @@
 .green {
     border-bottom-right-radius: 200%;
     background-color: green;
+}
+
+.center {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    height: 300px;
+    width: 300px;
+    border-radius: 50%;
+    background-color: #111111;
+    z-index: 2;
 }

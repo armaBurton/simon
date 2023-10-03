@@ -7,6 +7,7 @@ export const Main = () => {
             <div className="button red" />
             <div className="button blue" />
             <div className="button green" />
+            <div className="center" />
         </div>
     </section>;
 }
