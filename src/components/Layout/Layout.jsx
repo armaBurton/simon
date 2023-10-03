@@ -1,3 +1,9 @@
+import { Outlet } from "react-router-dom";
+
 export const Layout = () => {
-    return <></>;
+    return <>
+        <section>
+            <Outlet />
+        </section>
+    </>;
 }

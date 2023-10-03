@@ -2,15 +2,19 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
   Route,
-  RouterProvider
+  RouterProvider,
+  Navigate
 } from 'react-router-dom';
 import './App.css';
 import { Layout } from './components/Layout/Layout';
+import { Main } from './views/Main/Main';
 
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<Layout />}>
+        <Route index element={<Navigate to="/main" />} />
+        <Route path="/main" element={<Main />} />
       </Route>
     )
   );
