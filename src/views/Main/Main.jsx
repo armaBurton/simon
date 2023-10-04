@@ -12,7 +12,7 @@ export const Main = () => {
 
     return <section className="main-section">
         <div className="simon-body">
-            <div className="game-button yellow" onclick={handleClick} />
+            <div className="game-button yellow" onClick={handleClick} />
             <div className="game-button red" />
             <div className="game-button blue" />
             <div className="game-button green" />
