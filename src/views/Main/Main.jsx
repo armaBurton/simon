@@ -5,6 +5,8 @@ import { useState } from "react";
 
 export const Main = () => {
     const [count, setCount] = useState("000");
+    const [randoPattern, setRandoPattern] = useState([]);
+    const [userPattern, setUserPatter] = useState([]);
 
     const handleClick = () => {
         alert("click");
