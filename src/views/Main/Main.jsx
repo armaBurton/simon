@@ -26,5 +26,9 @@ export const Main = () => {
                 </div>
             </div>
         </div>
+        <div className="button-container">
+            <button className="start-button control-buttons">start</button>
+            <button className="reset-button control-buttons">reset</button>
+        </div>
     </section>;
 }
