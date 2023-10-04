@@ -100,4 +100,41 @@
     border-radius: 50%;
     background-color: #111111;
     z-index: 2;
+    display: flex;
+    align-content: center;
+    /* justify-content: center; */
+    flex-direction: column;
+}
+
+.title {
+    font-size: 5rem;
+    color: white;
+    z-index: 3;
+    margin-top: 40px;
+    text-align: center;
+}
+
+.score-container {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.score-label {
+    color: var(--bright-red)
+}
+
+.score-counter {
+    background-color: white;
+    height: 85px;
+    width: 125px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.count {
+    font-size: 4.5rem;
+    color: #111111;
 }
