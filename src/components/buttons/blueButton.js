@@ -1,4 +1,4 @@
-export const blueButton = () => {
+export const blueButton = (count) => {
 
-    return <></>;
+    return count + 1;
 }

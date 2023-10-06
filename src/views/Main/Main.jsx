@@ -1,6 +1,9 @@
 import "./Main.css";
 import { useEffect, useState } from "react";
 import { redButton } from "../../components/buttons/redButton";
+import { yellowButton } from "../../components/buttons/yellowButton";
+import { blueButton } from "../../components/buttons/blueButton";
+import { greenButton } from "../../components/buttons/greenButton";
 
 
 
@@ -11,43 +14,62 @@ export const Main = () => {
     const [gameOn, setGameOn] = useState(0);
 
     const handleStart = () => {
-        if (gameOn === 0) {
-            setGameOn(1);
-        } else {
-            setGameOn(0);
-        }
+        setGameOn(1);
+        playGame();
     }
 
-    useEffect(() => {
-        if (gameOn === 1) {
-            alert("game on");
+    const handleStop = () => {
+        setGameOn(0);
+    }
+
+    // useEffect(() => {
+    //     if (gameOn === 1) {
+    //         setCount(0);
+    //         playGame();
+    //     }
+    // }, [gameOn])
+
+    const playGame = () => {
+        const hotSwap = [];
+        for (let i = 0; i < 10; i++) {
+            const randoNumbo = Math.floor(Math.random() * (4) + 1)
+            hotSwap.push(randoNumbo);
+            setRandoPattern(hotSwap);
         }
-    }, [gameOn])
+        // do {
+        //     const randoNumbo = Math.floor(Math.random() * (4) + 1)
+        //     hotSwap.push(randoNumbo);
+        //     setRandoPattern(hotSwap);
+        //     console.log(randoPattern);
+        //     // if (hotSwap.length() === 10) setGameOn(0);
+        //     setGameOn(gameOn + 1);
+        // } while (gameOn < 10);
+    }
 
     const handleYellowClick = () => {
-        setCount(count + 1);
+        setCount(yellowButton(count));
     }
 
     const handleRedClick = () => {
-        setCount(count + 1);
+        setCount(redButton(count));
     }
 
     const handleBlueClick = () => {
-        setCount(count + 1);
+        setCount(blueButton(count));
     }
 
     const handleGreenClick = () => {
-        setCount(count + 1);
+        setCount(greenButton(count));
     }
 
     return <section className="main-section">
         <div className="button-container">
             <button className="start-button control-buttons" onClick={handleStart}>start</button>
-            <button className="reset-button control-buttons">reset</button>
+            <button className="reset-button control-buttons" onClick={handleStop}>stop</button>
         </div>
         <div className="simon-body">
             <div className="game-button yellow" onClick={handleYellowClick} />
-            <div className="game-button red" onClick={() => setCount(redButton(count))} />
+            <div className="game-button red" onClick={handleRedClick} />
             <div className="game-button blue" onClick={handleBlueClick} />
             <div className="game-button green" onClick={handleGreenClick} />
             <div className="center" >
