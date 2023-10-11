@@ -32,36 +32,27 @@ export const Main = () => {
         }
     }, [gameOn])
 
-    // useEffect(() => {
-    // }, [userPattern])
-
-    // useEffect(() => {
-    // }, [randoPattern])
-
     const randoNumboGenerato = (arr) => {
         setRandoPattern([...arr, Math.ceil(Math.random() * 4)])
     }
 
-    const playSequence = (sequence) => {
-        for (let i = 0; i < sequence.length; i++) {
-            const temp = i;
-            setTimeout(() => console.log(randoPattern[temp]), 5000);
-            // timeOut(i);
+    const testArr = [1, 2, 3, 4, 5, 6];
+    const playSequence = async (testArr) => {
+        for (let i = 0; i < testArr.length; i++) {
+            // console.log(testArr[i]);
+            await timeOut(i, testArr);
         }
     }
 
-    // const timeOut = (i) => {
-    // }
+    const timeOut = (i, sequence) => {
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                console.log(`${i}, ${sequence[i]}`);
+                resolve();
+            }, 1000);
+        });
 
-    // const playGame = () => {
-    //     if (playerTurn === 0) {
-    //         const randoNumbo = Math.floor(Math.random() * (4) + 1)
-    //         setRandoPattern([...randoPattern, randoNumbo]);
-    //     } else if (playerTurn === 1 && userPattern < randoPattern) {
-
-    //     }
-
-    // }
+    }
 
     const handleYellowClick = () => {
         setCount(yellowButton(count));
