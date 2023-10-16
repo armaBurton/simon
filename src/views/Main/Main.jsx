@@ -27,8 +27,8 @@ export const Main = () => {
             setRandoPattern([]);
             setUserPattern([]);
             setCount(0);
-            randoNumboGenerato(randoPattern);
-            playSequence(randoPattern);
+            // randoNumboGenerato(randoPattern);
+            // playSequence(randoPattern);
         }
     }, [gameOn])
 
