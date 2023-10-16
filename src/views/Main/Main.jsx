@@ -12,7 +12,7 @@ export const Main = () => {
     const [randoPattern, setRandoPattern] = useState([]);
     const [userPattern, setUserPattern] = useState([]);
     const [gameOn, setGameOn] = useState(0);
-    const [playerTurn, setPlayerTurn] = useState(0)
+    // const [playerTurn, setPlayerTurn] = useState(0)
 
     const handleStart = () => {
         setGameOn(1);
@@ -36,7 +36,7 @@ export const Main = () => {
         setRandoPattern([...arr, Math.ceil(Math.random() * 4)])
     }
 
-    const testArr = [1, 2, 3, 4, 5, 6];
+    // const testArr = [1, 2, 3, 4, 5, 6];
     const playSequence = async (testArr) => {
         for (let i = 0; i < testArr.length; i++) {
             // console.log(testArr[i]);
