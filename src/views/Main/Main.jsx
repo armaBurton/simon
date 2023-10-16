@@ -27,10 +27,14 @@ export const Main = () => {
             setRandoPattern([]);
             setUserPattern([]);
             setCount(0);
-            // randoNumboGenerato(randoPattern);
-            // playSequence(randoPattern);
+            runGameFunctions();
         }
     }, [gameOn])
+
+    const runGameFunctions = () => {
+        randoNumboGenerato(randoPattern);
+        playSequence(randoPattern);
+    }
 
     const randoNumboGenerato = (arr) => {
         setRandoPattern([...arr, Math.ceil(Math.random() * 4)])
