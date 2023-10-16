@@ -40,7 +40,7 @@ export const Main = () => {
         setRandoPattern([...arr, Math.ceil(Math.random() * 4)])
     }
 
-    // const testArr = [1, 2, 3, 4, 5, 6];
+    const testArr = [1, 2, 3, 4, 5, 6];
     const playSequence = async (testArr) => {
         for (let i = 0; i < testArr.length; i++) {
             // console.log(testArr[i]);
