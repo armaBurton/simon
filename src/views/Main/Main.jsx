@@ -16,20 +16,16 @@ export const Main = () => {
 
     const handleStart = () => {
         setGameOn(1);
+        setCount(0);
+        setRandoPattern([]);
+        setUserPattern([]);
+        runGameFunctions();
     }
 
     const handleStop = () => {
         setGameOn(0);
     }
 
-    useEffect(() => {
-        if (gameOn === 1) {
-            setRandoPattern([]);
-            setUserPattern([]);
-            setCount(0);
-            runGameFunctions();
-        }
-    }, [gameOn])
 
     const runGameFunctions = () => {
         randoNumboGenerato(randoPattern);
