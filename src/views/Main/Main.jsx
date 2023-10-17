@@ -1,5 +1,5 @@
 import "./Main.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { redButton } from "../../components/buttons/redButton";
 import { yellowButton } from "../../components/buttons/yellowButton";
 import { blueButton } from "../../components/buttons/blueButton";
@@ -11,11 +11,11 @@ export const Main = () => {
     const [count, setCount] = useState(0);
     const [randoPattern, setRandoPattern] = useState([]);
     const [userPattern, setUserPattern] = useState([]);
-    const [gameOn, setGameOn] = useState(0);
+    // const [gameOn, setGameOn] = useState(0);
     // const [playerTurn, setPlayerTurn] = useState(0)
 
     const handleStart = () => {
-        setGameOn(1);
+        // setGameOn(1);
         setCount(0);
         setRandoPattern([]);
         setUserPattern([]);
@@ -23,7 +23,7 @@ export const Main = () => {
     }
 
     const handleStop = () => {
-        setGameOn(0);
+        // setGameOn(0);
     }
 
 
@@ -36,11 +36,10 @@ export const Main = () => {
         setRandoPattern([...arr, Math.ceil(Math.random() * 4)])
     }
 
-    const testArr = [1, 2, 3, 4, 5, 6];
-    const playSequence = async (testArr) => {
-        for (let i = 0; i < testArr.length; i++) {
-            // console.log(testArr[i]);
-            await timeOut(i, testArr);
+    const playSequence = async (randoPattern) => {
+        for (let i = 0; i < randoPattern.length; i++) {
+            // console.log(randoPattern[i]);
+            await timeOut(i, randoPattern);
         }
     }
 
