@@ -7,7 +7,7 @@ import { greenButton } from "../../components/buttons/greenButton";
 
 
 
-export default Main = () => {
+export const Main = () => {
     const [count, setCount] = useState(0);
     const [randoPattern, setRandoPattern] = useState([]);
     const [userPattern, setUserPattern] = useState([]);
