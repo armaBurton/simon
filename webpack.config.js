@@ -3,7 +3,7 @@ const path = require('path');
 module.exports = {
   entry: './src/index.js', // Adjust entry point as per your project
   output: {
-    path: path.resolve(__dirname, 'dist'), // Adjust output directory as per your project
+    path: path.resolve(__dirname, 'build'), // Adjust output directory as per your project
     filename: 'bundle.js', // Adjust output filename as per your project
   },
   module: {
