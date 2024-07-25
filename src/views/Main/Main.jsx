@@ -4,7 +4,7 @@ import { redButton } from "../../components/buttons/redButton";
 import { yellowButton } from "../../components/buttons/yellowButton";
 import { blueButton } from "../../components/buttons/blueButton";
 import { greenButton } from "../../components/buttons/greenButton";
-
+import { audio } from "../../components/audio/oscillator";
 
 
 export const Main = () => {
@@ -54,21 +54,25 @@ export const Main = () => {
     }
 
     const handleYellowClick = () => {
+        audio("yellow");
         setCount(yellowButton(count));
         setUserPattern([...userPattern, 1]);
     }
-
+    
     const handleRedClick = () => {
+        audio("red");
         setCount(redButton(count));
         setUserPattern([...userPattern, 2]);
     }
-
+    
     const handleBlueClick = () => {
+        audio("blue");
         setCount(blueButton(count));
         setUserPattern([...userPattern, 3]);
     }
-
+    
     const handleGreenClick = () => {
+        audio("green");
         setCount(greenButton(count));
         setUserPattern([...userPattern, 4]);
     }
