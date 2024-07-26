@@ -19,5 +19,5 @@ export const audio = (color) => {
         oscillator.stop(endTime);
     }
 
-  playOscillator(context.currentTime, context.currentTime + .42, freq)
+  playOscillator(context.currentTime, context.currentTime + .42, freq);
 }
