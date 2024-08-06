@@ -1,5 +1,5 @@
 import "./Main.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { redButton } from "../../components/buttons/redButton";
 import { yellowButton } from "../../components/buttons/yellowButton";
 import { blueButton } from "../../components/buttons/blueButton";
@@ -30,14 +30,20 @@ export const Main = () => {
 
 
     const runGameFunctions = () => {
-        randoNumboGenerato(randoPattern);
-        playSequence(randoPattern);
-        console.log(randoPattern);
+
+        setRandoPattern(randoNumboGenerato(randoPattern))
+
         setPlayerTurn(1);
     }
 
+    useEffect(() => {
+        console.log(randoPattern);
+        playSequence(randoPattern);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [randoPattern])
+
     const randoNumboGenerato = (arr) => {
-        setRandoPattern([...arr, Math.ceil(Math.random() * 4)])
+        return [...arr, Math.ceil(Math.random() * 4)]
     }
 
     const playSequence = async (randoPattern) => {
@@ -47,15 +53,19 @@ export const Main = () => {
         }
     }
 
+    const getTime = (length) => { 
+        if (length > 10) {
+            return 500;
+        } else if ( length > 5){
+            return 750;
+        }
+        return 1000;
+    }
+
     const timeOut = (i, sequence, length) => {
         return new Promise((resolve) => {
-            let timer = 1000;
-            console.log(length);
-            if (length > 10) {
-                timer = 500;
-            } else if ( length > 5){
-                timer = 750;
-            }
+            const timer = getTime(length); 
+
             setTimeout(() => {
                 // console.log(`${i}, ${sequence[i]}`);
                 switch(sequence[i]){
