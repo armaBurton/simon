@@ -12,13 +12,15 @@ export const Main = () => {
     const [randoPattern, setRandoPattern] = useState([]);
     const [userPattern, setUserPattern] = useState([]);
     // const [gameOn, setGameOn] = useState(0);
-    // const [playerTurn, setPlayerTurn] = useState(0)
+    const [playerTurn, setPlayerTurn] = useState(0)
 
     const handleStart = () => {
         // setGameOn(1);
         setCount(0);
         setRandoPattern([]);
+        console.log(randoPattern);
         setUserPattern([]);
+        console.log(userPattern);
         runGameFunctions();
     }
 
@@ -30,6 +32,8 @@ export const Main = () => {
     const runGameFunctions = () => {
         randoNumboGenerato(randoPattern);
         playSequence(randoPattern);
+        console.log(randoPattern);
+        setPlayerTurn(1);
     }
 
     const randoNumboGenerato = (arr) => {
@@ -39,16 +43,39 @@ export const Main = () => {
     const playSequence = async (randoPattern) => {
         for (let i = 0; i < randoPattern.length; i++) {
             // console.log(randoPattern[i]);
-            await timeOut(i, randoPattern);
+            await timeOut(i, randoPattern, randoPattern.length);
         }
     }
 
-    const timeOut = (i, sequence) => {
+    const timeOut = (i, sequence, length) => {
         return new Promise((resolve) => {
+            let timer = 1000;
+            console.log(length);
+            if (length > 10) {
+                timer = 500;
+            } else if ( length > 5){
+                timer = 750;
+            }
             setTimeout(() => {
-                console.log(`${i}, ${sequence[i]}`);
+                // console.log(`${i}, ${sequence[i]}`);
+                switch(sequence[i]){
+                    case 1:
+                        audio("yellow");
+                        break;
+                    case 2:
+                        audio("red");
+                        break;
+                    case 3:
+                        audio("blue");
+                        break;
+                    case 4:
+                        audio("green");
+                        break;
+                    default:
+                        break;
+                }
                 resolve();
-            }, 1000);
+            }, timer);
         });
 
     }
@@ -57,24 +84,32 @@ export const Main = () => {
         audio("yellow");
         setCount(yellowButton(count));
         setUserPattern([...userPattern, 1]);
+        console.log(userPattern);
+        //playSequence();
     }
     
     const handleRedClick = () => {
         audio("red");
         setCount(redButton(count));
         setUserPattern([...userPattern, 2]);
+        console.log(userPattern);
+        // playSequence();
     }
     
     const handleBlueClick = () => {
         audio("blue");
         setCount(blueButton(count));
         setUserPattern([...userPattern, 3]);
+        console.log(userPattern);
+        // playSequence();
     }
     
     const handleGreenClick = () => {
         audio("green");
         setCount(greenButton(count));
         setUserPattern([...userPattern, 4]);
+        console.log(userPattern);
+        // playSequence();
     }
 
     return <section className="main-section">
