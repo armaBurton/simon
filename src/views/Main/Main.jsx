@@ -67,23 +67,10 @@ export const Main = () => {
             const timer = getTime(length); 
 
             setTimeout(() => {
-                // console.log(`${i}, ${sequence[i]}`);
-                switch(sequence[i]){
-                    case 1:
-                        audio("yellow");
-                        break;
-                    case 2:
-                        audio("red");
-                        break;
-                    case 3:
-                        audio("blue");
-                        break;
-                    case 4:
-                        audio("green");
-                        break;
-                    default:
-                        break;
-                }
+                sequence[i] === 1 ? audio("yellow") : 
+                    sequence[i] === 2 ? audio("red") : 
+                        sequence[i] ===3 ? audio("blue") :
+                            audio("green");
                 resolve();
             }, timer);
         });
