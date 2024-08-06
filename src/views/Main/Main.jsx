@@ -56,9 +56,9 @@ export const Main = () => {
     }
 
     const getTime = (length) => { 
-        if (length > 10) {
+        if (length > 9) {
             return 500;
-        } else if ( length > 5){
+        } else if ( length > 4){
             return 750;
         }
         return 1000;
