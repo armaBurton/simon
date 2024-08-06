@@ -82,7 +82,6 @@ export const Main = () => {
         setCount(yellowButton(count));
         setUserPattern([...userPattern, 1]);
         console.log(userPattern);
-        //playSequence();
     }
     
     const handleRedClick = () => {
@@ -90,7 +89,6 @@ export const Main = () => {
         setCount(redButton(count));
         setUserPattern([...userPattern, 2]);
         console.log(userPattern);
-        // playSequence();
     }
     
     const handleBlueClick = () => {
@@ -98,7 +96,6 @@ export const Main = () => {
         setCount(blueButton(count));
         setUserPattern([...userPattern, 3]);
         console.log(userPattern);
-        // playSequence();
     }
     
     const handleGreenClick = () => {
@@ -106,7 +103,6 @@ export const Main = () => {
         setCount(greenButton(count));
         setUserPattern([...userPattern, 4]);
         console.log(userPattern);
-        // playSequence();
     }
 
     return <section className="main-section">
