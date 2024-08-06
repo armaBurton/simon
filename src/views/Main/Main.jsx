@@ -1,10 +1,7 @@
 import "./Main.css";
 import { useEffect, useState } from "react";
-import { redButton } from "../../components/buttons/redButton";
-import { yellowButton } from "../../components/buttons/yellowButton";
-import { blueButton } from "../../components/buttons/blueButton";
-import { greenButton } from "../../components/buttons/greenButton";
 import { audio } from "../../components/audio/oscillator";
+import { gameButton } from "../../components/buttons/gameButton";
 
 
 export const Main = () => {
@@ -16,7 +13,7 @@ export const Main = () => {
 
     const handleStart = () => {
         // setGameOn(1);
-        setCount(0);
+        setCount(1);
         setRandoPattern([]);
         console.log(randoPattern);
         setUserPattern([]);
@@ -39,16 +36,21 @@ export const Main = () => {
     useEffect(() => {
         console.log(randoPattern);
         playSequence(randoPattern);
+        
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [randoPattern])
+    
+    useEffect(() => {
+        // console.log(userPattern);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [userPattern])
 
     const randoNumboGenerato = (arr) => {
         return [...arr, Math.ceil(Math.random() * 4)]
     }
 
     const playSequence = async (randoPattern) => {
-        for (let i = 0; i < randoPattern.length; i++) {
-            // console.log(randoPattern[i]);
+        for (let i = 0; i < randoPattern.length; i++) {            
             await timeOut(i, randoPattern, randoPattern.length);
         }
     }
@@ -77,32 +79,8 @@ export const Main = () => {
 
     }
 
-    const handleYellowClick = () => {
-        audio("yellow");
-        setCount(yellowButton(count));
-        setUserPattern([...userPattern, 1]);
-        console.log(userPattern);
-    }
-    
-    const handleRedClick = () => {
-        audio("red");
-        setCount(redButton(count));
-        setUserPattern([...userPattern, 2]);
-        console.log(userPattern);
-    }
-    
-    const handleBlueClick = () => {
-        audio("blue");
-        setCount(blueButton(count));
-        setUserPattern([...userPattern, 3]);
-        console.log(userPattern);
-    }
-    
-    const handleGreenClick = () => {
-        audio("green");
-        setCount(greenButton(count));
-        setUserPattern([...userPattern, 4]);
-        console.log(userPattern);
+    const handleGameButton = (e) =>{    
+        setUserPattern([...userPattern, gameButton(e)]);     
     }
 
     return <section className="main-section">
@@ -111,10 +89,10 @@ export const Main = () => {
             <button className="reset-button control-buttons" onClick={handleStop}>stop</button>
         </div>
         <div className="simon-body">
-            <div className="game-button yellow" data-tile="yellow" onClick={handleYellowClick} />
-            <div className="game-button red" data-tile="red" onClick={handleRedClick} />
-            <div className="game-button blue" data-tile="blue" onClick={handleBlueClick} />
-            <div className="game-button green" data-tile="green" onClick={handleGreenClick} />
+            <div id="yellow" className="game-button yellow" data-tile="yellow" onClick={handleGameButton} />
+            <div id="red" className="game-button red" data-tile="red" onClick={handleGameButton} />
+            <div id="blue" className="game-button blue" data-tile="blue" onClick={handleGameButton} />
+            <div id="green" className="game-button green" data-tile="green" onClick={handleGameButton} />
             <div className="center" >
                 <h1 className="title">simon</h1>
                 <div className="score-container">
