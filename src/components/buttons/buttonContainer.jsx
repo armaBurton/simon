@@ -1,5 +1,3 @@
-import React from "react";
-
 const handleGameButton = (e) =>{    
     // setUserPattern([...userPattern, gameButton(e)]);     
 }
