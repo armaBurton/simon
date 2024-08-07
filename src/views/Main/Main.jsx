@@ -1,8 +1,9 @@
 import "./Main.css";
+import React, {Component} from "react";
 import { useEffect, useState } from "react";
 import { audio } from "../../components/audio/oscillator";
-import { yellowButton } from "../../components/buttons/yellowButton";
 import { gameButton } from "../../components/buttons/gameButton";
+import buttons from "../../components/buttons/buttonContainer";
 
 
 export const Main = () => {
@@ -75,7 +76,7 @@ export const Main = () => {
                 //     sequence[i] === 2 ? audio("red") : 
                 //         sequence[i] ===3 ? audio("blue") :
                 //             audio("green");
-                yellowButton(1);
+                // yellowButton(1);
                 resolve();
             }, timer);
             // yellowButton(0);
@@ -88,19 +89,19 @@ export const Main = () => {
         setUserPattern([...userPattern, gameButton(e)]);     
     }
 
+
     return <section className="main-section">
         <div className="button-container">
             <button className="start-button control-buttons" onClick={handleStart}>start</button>
             <button className="reset-button control-buttons" onClick={handleStop}>stop</button>
         </div>
         <div className="simon-body">
-            <div className="game-button yellow">
-                { yellowButton(0) }
-            </div>
-            {/* <div id="yellow" className="game-button yellow" data-tile="yellow" onClick={handleGameButton} /> */}
+            {<buttons />}
+            
+            {/* <div id="yellow" className="game-button yellow" data-tile="yellow" onClick={handleGameButton} />
             <div id="red" className="game-button red" data-tile="red" onClick={handleGameButton} />
             <div id="blue" className="game-button blue" data-tile="blue" onClick={handleGameButton} />
-            <div id="green" className="game-button green" data-tile="green" onClick={handleGameButton} />
+            <div id="green" className="game-button green" data-tile="green" onClick={handleGameButton} /> */}
             <div className="center" >
                 <h1 className="title">simon</h1>
                 <div className="score-container">
