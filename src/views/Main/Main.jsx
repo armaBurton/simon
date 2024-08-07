@@ -75,8 +75,10 @@ export const Main = () => {
                 //     sequence[i] === 2 ? audio("red") : 
                 //         sequence[i] ===3 ? audio("blue") :
                 //             audio("green");
+                yellowButton(1);
                 resolve();
             }, timer);
+            // yellowButton(0);
             setIndex(0);
         });
 
@@ -93,7 +95,7 @@ export const Main = () => {
         </div>
         <div className="simon-body">
             <div className="game-button yellow">
-                { yellowButton }
+                { yellowButton(0) }
             </div>
             {/* <div id="yellow" className="game-button yellow" data-tile="yellow" onClick={handleGameButton} /> */}
             <div id="red" className="game-button red" data-tile="red" onClick={handleGameButton} />

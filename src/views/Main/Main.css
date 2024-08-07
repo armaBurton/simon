@@ -39,6 +39,10 @@
      background-color: var(--dim-yellow)
  }
 
+ .b-yellow {
+     background-color: var(--bright-yellow);
+ }
+
  .yellow:hover {
      background-color: var(--bright-yellow);
  }
