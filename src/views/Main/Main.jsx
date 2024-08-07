@@ -3,7 +3,7 @@ import React, {Component} from "react";
 import { useEffect, useState } from "react";
 import { audio } from "../../components/audio/oscillator";
 import { gameButton } from "../../components/buttons/gameButton";
-import buttons from "../../components/buttons/buttonContainer";
+import { Buttons } from "../../components/buttons/buttonContainer";
 
 
 export const Main = () => {
@@ -96,7 +96,7 @@ export const Main = () => {
             <button className="reset-button control-buttons" onClick={handleStop}>stop</button>
         </div>
         <div className="simon-body">
-            {<buttons />}
+            <Buttons />
             
             {/* <div id="yellow" className="game-button yellow" data-tile="yellow" onClick={handleGameButton} />
             <div id="red" className="game-button red" data-tile="red" onClick={handleGameButton} />
