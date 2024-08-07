@@ -1,6 +1,7 @@
 import "./Main.css";
 import { useEffect, useState } from "react";
 import { audio } from "../../components/audio/oscillator";
+import { yellowButton } from "../../components/buttons/yellowButton";
 import { gameButton } from "../../components/buttons/gameButton";
 
 
@@ -8,6 +9,7 @@ export const Main = () => {
     const [count, setCount] = useState(0);
     const [randoPattern, setRandoPattern] = useState([]);
     const [userPattern, setUserPattern] = useState([]);
+    const [index, setIndex] = useState(0);
     // const [gameOn, setGameOn] = useState(0);
     const [playerTurn, setPlayerTurn] = useState(0)
 
@@ -67,14 +69,15 @@ export const Main = () => {
     const timeOut = (i, sequence, length) => {
         return new Promise((resolve) => {
             const timer = getTime(length); 
-
+            setIndex(sequence[i]);
             setTimeout(() => {
-                sequence[i] === 1 ? audio("yellow") : 
-                    sequence[i] === 2 ? audio("red") : 
-                        sequence[i] ===3 ? audio("blue") :
-                            audio("green");
+                // sequence[i] === 1 ? audio("yellow") : 
+                //     sequence[i] === 2 ? audio("red") : 
+                //         sequence[i] ===3 ? audio("blue") :
+                //             audio("green");
                 resolve();
             }, timer);
+            setIndex(0);
         });
 
     }
@@ -89,7 +92,10 @@ export const Main = () => {
             <button className="reset-button control-buttons" onClick={handleStop}>stop</button>
         </div>
         <div className="simon-body">
-            <div id="yellow" className="game-button yellow" data-tile="yellow" onClick={handleGameButton} />
+            <div className="game-button yellow">
+                { yellowButton }
+            </div>
+            {/* <div id="yellow" className="game-button yellow" data-tile="yellow" onClick={handleGameButton} /> */}
             <div id="red" className="game-button red" data-tile="red" onClick={handleGameButton} />
             <div id="blue" className="game-button blue" data-tile="blue" onClick={handleGameButton} />
             <div id="green" className="game-button green" data-tile="green" onClick={handleGameButton} />
