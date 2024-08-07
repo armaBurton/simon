@@ -1,9 +1,9 @@
 import "./Main.css";
-import React, {Component} from "react";
+import React from "react";
 import { useEffect, useState } from "react";
-import { audio } from "../../components/audio/oscillator";
-import { gameButton } from "../../components/buttons/gameButton";
-import { Buttons } from "../../components/buttons/buttonContainer";
+import { audio } from "../../components/audio/Oscillator";
+import { gameButton } from "../../components/buttons/GameButton";
+import { Buttons } from "../../components/buttons/ButtonContainer";
 
 
 export const Main = () => {
@@ -72,14 +72,12 @@ export const Main = () => {
             const timer = getTime(length); 
             setIndex(sequence[i]);
             setTimeout(() => {
-                // sequence[i] === 1 ? audio("yellow") : 
-                //     sequence[i] === 2 ? audio("red") : 
-                //         sequence[i] ===3 ? audio("blue") :
-                //             audio("green");
-                // yellowButton(1);
+                sequence[i] === 1 ? audio("yellow") : 
+                    sequence[i] === 2 ? audio("red") : 
+                        sequence[i] ===3 ? audio("blue") :
+                            audio("green");
                 resolve();
             }, timer);
-            // yellowButton(0);
             setIndex(0);
         });
 
@@ -98,10 +96,6 @@ export const Main = () => {
         <div className="simon-body">
             <Buttons />
             
-            {/* <div id="yellow" className="game-button yellow" data-tile="yellow" onClick={handleGameButton} />
-            <div id="red" className="game-button red" data-tile="red" onClick={handleGameButton} />
-            <div id="blue" className="game-button blue" data-tile="blue" onClick={handleGameButton} />
-            <div id="green" className="game-button green" data-tile="green" onClick={handleGameButton} /> */}
             <div className="center" >
                 <h1 className="title">simon</h1>
                 <div className="score-container">
