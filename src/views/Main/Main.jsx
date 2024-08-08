@@ -1,9 +1,8 @@
 import "./Main.css";
 // import style from "./Main.css";
 import React from "react";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { audio } from "../../components/audio/Oscillator";
-import { gameButtonAction } from "../../components/buttons/GameButton";
 import { Buttons } from "../../components/buttons/ButtonContainer";
 import { simonContext } from '../../components/context/SimonProvider'
 
@@ -95,9 +94,9 @@ export const Main = () => {
 
     }
 
-    const handleGameButton = (e) =>{    
-        setUserPattern([...userPattern, gameButtonAction(e)]);     
-    }
+    // const handleGameButton = (e) =>{    
+    //     setUserPattern([...userPattern, gameButtonAction(e)]);     
+    // }
 
 
     return <section className={'mainSection'}>

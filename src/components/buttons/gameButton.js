@@ -4,7 +4,7 @@ import { audio } from "../audio/Oscillator";
 
 export const gameButtonAction = ( e ) => {
     const color = e.target.className.split(" ")[1];
-   
+    console.log(color);
     audio(color);
 
     return color === 'yellow' ? 1 :

@@ -1,5 +1,13 @@
+import { simonContext } from "../context/SimonProvider";
+import { gameButtonAction } from "./GameButton";
+
 const handleGameButton = (e) =>{    
-    // setUserPattern([...userPattern, gameButton(e)]);     
+    const {
+        userPattern,
+        setUserPattern
+    } = simonContext();
+    
+    setUserPattern([...userPattern, gameButtonAction(e)]);     
 }
 
 export const Buttons = () => {
