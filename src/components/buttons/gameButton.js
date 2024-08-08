@@ -2,7 +2,7 @@ import "../../views/Main/Main.css"
 import { audio } from "../audio/Oscillator";
 
 
-export const gameButton = ( e ) => {
+export const gameButtonAction = ( e ) => {
     const color = e.target.className.split(" ")[1];
    
     audio(color);

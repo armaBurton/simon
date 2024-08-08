@@ -1,18 +1,30 @@
 import "./Main.css";
+// import style from "./Main.css";
 import React from "react";
 import { useEffect, useState } from "react";
 import { audio } from "../../components/audio/Oscillator";
-import { gameButton } from "../../components/buttons/GameButton";
+import { gameButtonAction } from "../../components/buttons/GameButton";
 import { Buttons } from "../../components/buttons/ButtonContainer";
+import { simonContext } from '../../components/context/SimonProvider'
 
 
 export const Main = () => {
-    const [count, setCount] = useState(0);
-    const [randoPattern, setRandoPattern] = useState([]);
-    const [userPattern, setUserPattern] = useState([]);
-    const [index, setIndex] = useState(0);
-    // const [gameOn, setGameOn] = useState(0);
-    const [playerTurn, setPlayerTurn] = useState(0)
+    // const [count, setCount] = useState(0);
+    // const [randoPattern, setRandoPattern] = useState([]);
+    // const [userPattern, setUserPattern] = useState([]);
+    // const [index, setIndex] = useState(0);
+    // // const [gameOn, setGameOn] = useState(0);
+    // const [playerTurn, setPlayerTurn] = useState(0)
+    const { 
+        count, 
+        setCount, 
+        randoPattern, 
+        setRandoPattern, 
+        userPattern, 
+        setUserPattern, 
+        setPlayerTurn, 
+        setIndex 
+    } = simonContext();
 
     const handleStart = () => {
         // setGameOn(1);
@@ -84,11 +96,11 @@ export const Main = () => {
     }
 
     const handleGameButton = (e) =>{    
-        setUserPattern([...userPattern, gameButton(e)]);     
+        setUserPattern([...userPattern, gameButtonAction(e)]);     
     }
 
 
-    return <section className="main-section">
+    return <section className={'mainSection'}>
         <div className="button-container">
             <button className="start-button control-buttons" onClick={handleStart}>start</button>
             <button className="reset-button control-buttons" onClick={handleStop}>stop</button>
