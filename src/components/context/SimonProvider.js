@@ -3,8 +3,6 @@ import { createContext, useContext, useMemo, useState } from "react";
 const SimonContext = createContext();
 
 export const SimonProvider = ({ children }) => {
-  console.log("SimonProvider is rendering");
-
   const [count, setCount] = useState(0);
   const [randoPattern, setRandoPattern] = useState([]);
   const [userPattern, setUserPattern] = useState([]);

@@ -1,9 +1,5 @@
 import "./Main.css";
-// import style from "./Main.css";
-import React from "react";
-import { useEffect } from "react";
-import { audio } from "../../components/audio/oscillator";
-import { playSequence } from "../../components/audio/playback";
+import React, { useEffect, useRef } from "react";
 import { Buttons } from "../../components/buttons/buttonContainer";
 import { useSimon } from "../../components/context/SimonProvider";
 import { usePlayback } from "../../components/audio/playback";
@@ -34,9 +30,14 @@ export const Main = () => {
     setIndex,
   } = useSimon();
 
-  const { getTime, timeout, playSequence } = usePlayback();
+  const yellowRef = useRef(null);
+  const redRef = useRef(null);
+  const blueRef = useRef(null);
+  const greenRef = useRef(null);
 
-  console.log("Main is rendering with context:", { count });
+  const { playSequence } = usePlayback();
+
+  // console.log("Main is rendering with context:", { count });
 
   useEffect(() => {
     console.log(userPattern);
@@ -45,78 +46,105 @@ export const Main = () => {
 
   useEffect(() => {
     console.log(randoPattern);
-    playSequence(randoPattern);
+    playSequence(randoPattern, { yellowRef, redRef, blueRef, greenRef });
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [randoPattern]);
 
-  try {
-    const handleStart = () => {
-      setCount(1);
-      setRandoPattern([]);
-      setUserPattern([]);
-      console.log("handleStart: " + randoPattern);
-      // console.log(userPattern);
-      runGameFunctions();
-    };
-
-    const handleStop = () => {
-      setCount(0);
-      setRandoPattern([]);
-      console.log(randoPattern);
-      setUserPattern([]);
-      console.log(userPattern);
-      setPlayerTurn(false);
-      setIndex(0);
-    };
-
-    const runGameFunctions = () => {
-      setRandoPattern(randoNumboGenerato(randoPattern));
-
-      setPlayerTurn(!playerTurn);
-    };
-
-    const randoNumboGenerato = (arr) => {
-      return [...arr, Math.ceil(Math.random() * 4)];
-    };
-
-    const getTime = (length) => {
-      if (length > 9) {
-        return 500;
-      } else if (length > 4) {
-        return 750;
+  useEffect(() => {
+    if (playerTurn && userPattern.length > 0) {
+      if (userPattern.length === randoPattern.length) {
+        const isCorrect = userPattern.every(
+          (val, i) => val === randoPattern[i]
+        );
+        if (isCorrect) {
+          setCount(count + 1);
+          setUserPattern([]);
+          setPlayerTurn(false);
+          runGameFunctions();
+        } else {
+          console.log("Game Over!");
+          handleStop();
+        }
       }
-      return 1000;
-    };
+    }
+  }, [userPattern, randoPattern, count]);
 
-    return (
-      <section className={"mainSection"}>
-        <div className="button-container">
-          <button
-            className="start-button control-buttons"
-            onClick={handleStart}
-          >
-            start
-          </button>
-          <button className="reset-button control-buttons" onClick={handleStop}>
-            stop
-          </button>
-        </div>
-        <div className="simon-body">
-          <Buttons />
-          <div className="center">
-            <h1 className="title">simon</h1>
-            <div className="score-container">
-              <h2 className="score-label">SCORE</h2>
-              <div className="score-counter">
-                <p className="count">{count}</p>
-              </div>
+  // try {
+  const handleStart = () => {
+    setCount(1);
+    setRandoPattern([]);
+    setUserPattern([]);
+    console.log("handleStart: " + randoPattern);
+    runGameFunctions();
+  };
+
+  const handleStop = () => {
+    setCount(0);
+    setRandoPattern([]);
+    setUserPattern([]);
+    setPlayerTurn(false);
+    setIndex(0);
+  };
+
+  const runGameFunctions = () => {
+    setRandoPattern(randoNumboGenerato(randoPattern));
+
+    // setPlayerTurn(!playerTurn);
+  };
+
+  const randoNumboGenerato = (arr) => {
+    return [...arr, Math.ceil(Math.random() * 4)];
+  };
+
+  return (
+    <section className={"mainSection"}>
+      <div className="button-container">
+        <button className="start-button control-buttons" onClick={handleStart}>
+          start
+        </button>
+        <button className="reset-button control-buttons" onClick={handleStop}>
+          stop
+        </button>
+      </div>
+      <div className="simon-body">
+        <Buttons
+          yellowRef={yellowRef}
+          redRef={redRef}
+          blueRef={blueRef}
+          greenRef={greenRef}
+        />
+        <div className="center">
+          <h1 className="title">simon</h1>
+          <div className="score-container">
+            <h2 className="score-label">SCORE</h2>
+            <div className="score-counter">
+              <p className="count">{count}</p>
             </div>
           </div>
         </div>
-      </section>
-    );
-  } catch (error) {
-    return <ErrorBoundary />;
-  }
+      </div>
+    </section>
+  );
+  // } catch (error) {
+  //   return <ErrorBoundary />;
+  // }
 };
+
+// const getTime = (length) => {
+//   if (length > 9) {
+//     return 500;
+//   } else if (length > 4) {
+//     return 750;
+//   }
+//   return 1000;
+// };
+
+// {
+//   /* <Buttons
+//             yellowRef={yellowRef}
+//             redRef={redRef}
+//             blueRef={blueRef}
+//             greenRef={greenRef}
+//           /> */
+// }

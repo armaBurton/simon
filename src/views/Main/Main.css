@@ -36,7 +36,7 @@
      border-top-left-radius: 1000%;
      border-bottom-left-radius: 15%;
      border-top-right-radius: 15%;
-     background-color: var(--dim-yellow)
+     background-color: var(--dim-yellow) !important;
  }
 
  .b-yellow {
@@ -50,59 +50,75 @@
  .yellow:active {
      background-color: var(--press-yellow);
  }
+ 
+.yellowHighlight {
+    background-color: var(--press-yellow) !important;
+}
 
- .red {
-     border-top-right-radius: 1000%;
-     background-color: var(--dim-red);
-     border-bottom-right-radius: 15%;
-     border-top-left-radius: 15%;
- }
+.red {
+    border-top-right-radius: 1000%;
+    background-color: var(--dim-red) !important;
+    border-bottom-right-radius: 15%;
+    border-top-left-radius: 15%;
+}
 
- .red:hover {
-     background-color: var(--bright-red);
- }
+.red:hover {
+    background-color: var(--bright-red);
+}
 
- .red:active {
-     background-color: var(--press-red);
- }
+.red:active {
+    background-color: var(--press-red);
+}
 
- .blue {
-     border-bottom-left-radius: 1000%;
-     background-color: var(--dim-blue);
-     border-top-left-radius: 15%;
-     border-bottom-right-radius: 15%;
- }
+.redHighlight {
+    background-color: var(--press-red) !important;
+}
 
- .blue:hover {
-     background-color: var(--bright-blue);
- }
+.blue {
+    border-bottom-left-radius: 1000%;
+    background-color: var(--dim-blue) !important;
+    border-top-left-radius: 15%;
+    border-bottom-right-radius: 15%;
+}
 
- .blue:active {
-     background-color: var(--press-blue);
- }
+.blue:hover {
+    background-color: var(--bright-blue);
+}
 
- .green {
-     border-bottom-right-radius: 1000%;
-     background-color: var(--dim-green);
-     border-bottom-left-radius: 15%;
-     border-top-right-radius: 15%;
- }
+.blue:active {
+    background-color: var(--press-blue);
+}
 
- .green:hover {
-     background-color: var(--bright-green);
- }
+.blueHighlight {
+    background-color: var(--press-blue) !important;
+}
 
- .green:active {
-     background-color: var(--press-green);
- }
+.green {
+    border-bottom-right-radius: 1000%;
+    background-color: var(--dim-green) !important;
+    border-bottom-left-radius: 15%;
+    border-top-right-radius: 15%;
+}
 
- .center {
-     position: fixed;
-     left: 50%;
-     top: 50%;
-     transform: translate(-50%, -50%);
-     height: 300px;
-     width: 300px;
+.green:hover {
+    background-color: var(--bright-green);
+}
+
+.green:active {
+    background-color: var(--press-green);
+}
+
+.greenHighlight {
+    background-color: var(--press-green) !important;
+}
+
+.center {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    height: 300px;
+    width: 300px;
      border-radius: 50%;
      background-color: #111111;
      z-index: 2;
