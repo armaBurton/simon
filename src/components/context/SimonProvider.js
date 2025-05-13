@@ -1,5 +1,4 @@
 import { createContext, useContext, useMemo, useState } from "react";
-// import { SimonProvider } from "./components/context/SimonProvider";
 
 const SimonContext = createContext();
 
@@ -45,53 +44,3 @@ export const useSimon = () => {
 
   return context;
 };
-
-//   return (
-//     <SimonContext.Provider
-//       value={{
-//         count,
-//         setCount,
-//         randoPattern,
-//         setRandoPattern,
-//         userPattern,
-//         setUserPattern,
-//         index,
-//         setIndex,
-//         gameOn,
-//         setGameOn,
-//         playerTurn,
-//         setPlayerTurn,
-//       }}
-//     >
-//       {children}
-//     </SimonContext.Provider>
-//   );
-// export const useSimon = () => {
-//   const context = useContext(SimonContext);
-
-//   if (context === undefined) {
-//     throw new Error("useSimon must be used withing a SimonProvider");
-//   }
-
-//   return context;
-// };
-
-// export const simonContext = () => {
-//   // eslint-disable-next-line react-hooks/rules-of-hooks
-//   return useContext(SimonContext);
-// };
-
-//   const simonState = {
-//     count,
-//     setCount,
-//     randoPattern,
-//     setRandoPattern,
-//     userPattern,
-//     setUserPattern,
-//     index,
-//     setIndex,
-//     gameOn,
-//     setGameOn,
-//     playerTurn,
-//     setPlayerTurn,
-//   };

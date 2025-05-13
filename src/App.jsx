@@ -9,8 +9,6 @@ import {
 import "./App.css";
 import { Layout } from "./components/Layout/Layout";
 import { Main } from "./views/Main/Main";
-// import {Layout} from './components/Layout/Layout.jsx';
-// import {Main} from './views/Main/Main.jsx';
 
 function App() {
   const router = createBrowserRouter(

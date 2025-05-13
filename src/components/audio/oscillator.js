@@ -1,24 +1,35 @@
-export const playOscillator = (context, freq) => {
+const blue = () => {};
+const yellow = () => {};
+const red = () => {};
+const green = () => {};
+
+export const playOscillator = async (context, freq, color) => {
   const oscillator = context.createOscillator();
   const gain = context.createGain();
   const time = context.currentTime;
 
   oscillator.connect(gain);
-  oscillator.type = 'square';
+  oscillator.type = "square";
   oscillator.frequency.value = freq;
   gain.gain.value = 0.125;
   gain.connect(context.destination);
   oscillator.start(time);
-  oscillator.stop(time + .42);
-}
+  oscillator.stop(time + 0.42);
+};
 
 export const audio = (color) => {
-  const context  = new AudioContext();
+  const context = new AudioContext();
 
-  const freq = (color === "blue") ? 195.998 :
-  (color === "yellow") ? 261.626 : 
-    (color === "red") ? 329.628 : 
-      (color === "green" ) ? 391.995 : 42;
+  const freq =
+    color === "blue"
+      ? 195.998
+      : color === "yellow"
+      ? 261.626
+      : color === "red"
+      ? 329.628
+      : color === "green"
+      ? 391.995
+      : 42;
 
-  playOscillator(context, freq);
-}
+  playOscillator(context, freq, color);
+};

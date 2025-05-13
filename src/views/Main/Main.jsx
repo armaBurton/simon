@@ -3,8 +3,10 @@ import "./Main.css";
 import React from "react";
 import { useEffect } from "react";
 import { audio } from "../../components/audio/oscillator";
+import { playSequence } from "../../components/audio/playback";
 import { Buttons } from "../../components/buttons/buttonContainer";
 import { useSimon } from "../../components/context/SimonProvider";
+import { usePlayback } from "../../components/audio/playback";
 
 const ErrorBoundary = () => {
   return (
@@ -31,6 +33,9 @@ export const Main = () => {
     index,
     setIndex,
   } = useSimon();
+
+  const { getTime, timeout, playSequence } = usePlayback();
+
   console.log("Main is rendering with context:", { count });
 
   useEffect(() => {
@@ -40,7 +45,7 @@ export const Main = () => {
 
   useEffect(() => {
     console.log(randoPattern);
-    // playSequence(randoPattern);
+    playSequence(randoPattern);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [randoPattern]);
@@ -49,9 +54,9 @@ export const Main = () => {
     const handleStart = () => {
       setCount(1);
       setRandoPattern([]);
-      console.log(randoPattern);
       setUserPattern([]);
-      console.log(userPattern);
+      console.log("handleStart: " + randoPattern);
+      // console.log(userPattern);
       runGameFunctions();
     };
 
@@ -63,7 +68,6 @@ export const Main = () => {
       console.log(userPattern);
       setPlayerTurn(false);
       setIndex(0);
-      // runGameFunctions();
     };
 
     const runGameFunctions = () => {
@@ -76,12 +80,6 @@ export const Main = () => {
       return [...arr, Math.ceil(Math.random() * 4)];
     };
 
-    const playSequence = async (randoPattern) => {
-      for (let i = 0; i < randoPattern.length; i++) {
-        await timeOut(i, randoPattern, randoPattern.length);
-      }
-    };
-
     const getTime = (length) => {
       if (length > 9) {
         return 500;
@@ -90,28 +88,6 @@ export const Main = () => {
       }
       return 1000;
     };
-
-    const timeOut = (i, sequence, length) => {
-      return new Promise((resolve) => {
-        const timer = getTime(length);
-        setIndex(sequence[i]);
-        setTimeout(() => {
-          sequence[i] === 1
-            ? audio("yellow")
-            : sequence[i] === 2
-            ? audio("red")
-            : sequence[i] === 3
-            ? audio("blue")
-            : audio("green");
-          resolve();
-        }, timer);
-        setIndex(0);
-      });
-    };
-
-    // const handleGameButton = (e) =>{
-    //     setUserPattern([...userPattern, gameButtonAction(e)]);
-    // }
 
     return (
       <section className={"mainSection"}>
@@ -144,10 +120,3 @@ export const Main = () => {
     return <ErrorBoundary />;
   }
 };
-
-// const [count, setCount] = useState(0);
-// const [randoPattern, setRandoPattern] = useState([]);
-// const [userPattern, setUserPattern] = useState([]);
-// const [index, setIndex] = useState(0);
-// // const [gameOn, setGameOn] = useState(0);
-// const [playerTurn, setPlayerTurn] = useState(0)
