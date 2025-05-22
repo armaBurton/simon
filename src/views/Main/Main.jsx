@@ -3,6 +3,7 @@ import React, { useEffect, useRef } from "react";
 import { Buttons } from "../../components/buttons/buttonContainer";
 import { useSimon } from "../../components/context/SimonProvider";
 import { usePlayback } from "../../components/audio/playback";
+import simonLogo from "../../public/simon_white.png";
 
 const ErrorBoundary = () => {
   return (
@@ -118,7 +119,8 @@ export const Main = () => {
           greenRef={greenRef}
         />
         <div className="center">
-          <h1 className="title">simon</h1>
+          <img src={simonLogo} alt="simon logo" className="simon_logo" />
+          {/* <h1 className="title">simon</h1> */}
           <div className="score-container">
             <h2 className="score-label">SCORE</h2>
             <div className="score-counter">

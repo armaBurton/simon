@@ -123,12 +123,18 @@
     transform: translate(-50%, -50%);
     height: 300px;
     width: 300px;
-     border-radius: 50%;
-     background-color: #111111;
-     z-index: 2;
-     display: flex;
-     align-content: center;
-     flex-direction: column;
+    border-radius: 50%;
+    background-color: #111111;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding-top:1.5em;
+ }
+
+ .simon_logo {
+    width: 250px;
  }
 
  .title {
@@ -154,11 +160,11 @@
  .score-counter {
      background-color: white;
      height: 4rem;
-     width: 125px;
+     width: 100px;
      display: flex;
      align-items: center;
-     justify-content: center;
-     padding-bottom: .5em;
+     justify-content: flex-end;
+     padding: 0 .5em .5em .5em;
  }
 
  .count {
