@@ -36,7 +36,7 @@
      border-top-left-radius: 1000%;
      border-bottom-left-radius: 15%;
      border-top-right-radius: 15%;
-     background-color: var(--dim-yellow) !important;
+     background-color: var(--dim-yellow);
  }
 
  .b-yellow {
@@ -52,12 +52,12 @@
  }
  
 .yellowHighlight {
-    background-color: var(--press-yellow) !important;
+    background-color: var(--press-yellow);
 }
 
 .red {
     border-top-right-radius: 1000%;
-    background-color: var(--dim-red) !important;
+    background-color: var(--dim-red);
     border-bottom-right-radius: 15%;
     border-top-left-radius: 15%;
 }
@@ -71,12 +71,12 @@
 }
 
 .redHighlight {
-    background-color: var(--press-red) !important;
+    background-color: var(--press-red);
 }
 
 .blue {
     border-bottom-left-radius: 1000%;
-    background-color: var(--dim-blue) !important;
+    background-color: var(--dim-blue);
     border-top-left-radius: 15%;
     border-bottom-right-radius: 15%;
 }
@@ -90,12 +90,12 @@
 }
 
 .blueHighlight {
-    background-color: var(--press-blue) !important;
+    background-color: var(--press-blue);
 }
 
 .green {
     border-bottom-right-radius: 1000%;
-    background-color: var(--dim-green) !important;
+    background-color: var(--dim-green);
     border-bottom-left-radius: 15%;
     border-top-right-radius: 15%;
 }
@@ -109,7 +109,11 @@
 }
 
 .greenHighlight {
-    background-color: var(--press-green) !important;
+    background-color: var(--press-green);
+}
+
+.disable {
+    pointer-events: none;
 }
 
 .center {

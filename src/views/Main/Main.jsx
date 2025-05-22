@@ -34,10 +34,9 @@ export const Main = () => {
   const redRef = useRef(null);
   const blueRef = useRef(null);
   const greenRef = useRef(null);
+  const buttonMouseEvents = useRef(null);
 
   const { playSequence } = usePlayback();
-
-  // console.log("Main is rendering with context:", { count });
 
   useEffect(() => {
     console.log(userPattern);
@@ -46,7 +45,11 @@ export const Main = () => {
 
   useEffect(() => {
     console.log(randoPattern);
-    playSequence(randoPattern, { yellowRef, redRef, blueRef, greenRef });
+    playSequence(
+      randoPattern,
+      { yellowRef, redRef, blueRef, greenRef },
+      buttonMouseEvents
+    );
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [randoPattern]);
@@ -107,7 +110,7 @@ export const Main = () => {
           stop
         </button>
       </div>
-      <div className="simon-body">
+      <div className="simon-body" ref={buttonMouseEvents}>
         <Buttons
           yellowRef={yellowRef}
           redRef={redRef}

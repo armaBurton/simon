@@ -53,7 +53,14 @@ export const usePlayback = () => {
     }
   };
 
-  const timeout = async (i, sequence, length, setIndex, buttonRef) => {
+  const timeout = async (
+    i,
+    sequence,
+    length,
+    setIndex,
+    buttonRef,
+    buttonMouseEvents
+  ) => {
     return new Promise((resolve) => {
       const timer = getTime(length);
       const highlightDuration = getButtonTime(length);
@@ -86,7 +93,7 @@ export const usePlayback = () => {
     });
   };
 
-  const playSequence = async (randoPattern, refs) => {
+  const playSequence = async (randoPattern, refs, buttonMouseEvents) => {
     for (let i = 0; i < randoPattern.length; i++) {
       const buttonRef = {
         1: refs.yellowRef,
@@ -94,7 +101,17 @@ export const usePlayback = () => {
         3: refs.blueRef,
         4: refs.greenRef,
       }[randoPattern[i]];
-      await timeout(i, randoPattern, randoPattern.length, setIndex, buttonRef);
+
+      buttonMouseEvents.current.style.pointerEvents = "none";
+      await timeout(
+        i,
+        randoPattern,
+        randoPattern.length,
+        setIndex,
+        buttonRef,
+        buttonMouseEvents
+      );
+      buttonMouseEvents.current.style.pointerEvents = "auto";
     }
   };
 
