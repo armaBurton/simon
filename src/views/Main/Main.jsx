@@ -74,7 +74,6 @@ export const Main = () => {
     }
   }, [userPattern, randoPattern, count]);
 
-  // try {
   const handleStart = () => {
     setCount(1);
     setRandoPattern([]);
@@ -131,25 +130,4 @@ export const Main = () => {
       </div>
     </section>
   );
-  // } catch (error) {
-  //   return <ErrorBoundary />;
-  // }
 };
-
-// const getTime = (length) => {
-//   if (length > 9) {
-//     return 500;
-//   } else if (length > 4) {
-//     return 750;
-//   }
-//   return 1000;
-// };
-
-// {
-//   /* <Buttons
-//             yellowRef={yellowRef}
-//             redRef={redRef}
-//             blueRef={blueRef}
-//             greenRef={greenRef}
-//           /> */
-// }

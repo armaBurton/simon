@@ -31,32 +31,3 @@ export const Buttons = ({ yellowRef, redRef, blueRef, greenRef }) => {
     </>
   );
 };
-
-//   <div
-//     id="yellow"
-//     className="game-button yellow"
-//     data-tile="yellow"
-//     ref={yellowRef}
-//     onClick={handleGameButton}
-//   />,
-//   <div
-//     id="red"
-//     className="game-button red"
-//     data-tile="red"
-//     ref={redRef}
-//     onClick={handleGameButton}
-//   />,
-//   <div
-//     id="blue"
-//     className="game-button blue"
-//     data-tile="blue"
-//     ref={blueRef}
-//     onClick={handleGameButton}
-//   />,
-//   <div
-//     id="green"
-//     className="game-button green"
-//     data-tile="green"
-//     ref={greenRef}
-//     onClick={handleGameButton}
-//   />,

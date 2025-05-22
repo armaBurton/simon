@@ -1,8 +1,3 @@
-const blue = () => {};
-const yellow = () => {};
-const red = () => {};
-const green = () => {};
-
 export const playOscillator = async (context, freq, color) => {
   const oscillator = context.createOscillator();
   const gain = context.createGain();
