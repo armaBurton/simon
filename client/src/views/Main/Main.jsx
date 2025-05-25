@@ -1,19 +1,20 @@
 import "./Main.css";
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { Buttons } from "../../components/buttons/buttonContainer";
 import { useSimon } from "../../components/context/SimonProvider";
 import { usePlayback } from "../../components/audio/playback";
-import simonLogo from "../../public/simon_white.png";
+import simonLogo from "../../assets/simon_white.png";
+import { Nav } from "../Nav/Nav";
 
-const ErrorBoundary = () => {
-  return (
-    <div>
-      {" "}
-      <h1>Something went wrong! </h1>
-      <p>Please refresh the page or try again later.</p>
-    </div>
-  );
-};
+// const ErrorBoundary = () => {
+//   return (
+//     <div>
+//       {" "}
+//       <h1>Something went wrong! </h1>
+//       <p>Please refresh the page or try again later.</p>
+//     </div>
+//   );
+// };
 
 export const Main = () => {
   const {
@@ -91,17 +92,18 @@ export const Main = () => {
   };
 
   const runGameFunctions = () => {
-    setRandoPattern(randoNumboGenerato(randoPattern));
+    setRandoPattern(randoNumboGenerator(randoPattern));
 
     // setPlayerTurn(!playerTurn);
   };
 
-  const randoNumboGenerato = (arr) => {
+  const randoNumboGenerator = (arr) => {
     return [...arr, Math.ceil(Math.random() * 4)];
   };
 
   return (
     <section className={"mainSection"}>
+      <Nav />
       <div className="button-container">
         <button className="start-button control-buttons" onClick={handleStart}>
           start
@@ -119,7 +121,6 @@ export const Main = () => {
         />
         <div className="center">
           <img src={simonLogo} alt="simon logo" className="simon_logo" />
-          {/* <h1 className="title">simon</h1> */}
           <div className="score-container">
             <h2 className="score-label">SCORE</h2>
             <div className="score-counter">
