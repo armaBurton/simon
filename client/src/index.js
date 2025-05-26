@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App.jsx";
-import { SimonProvider } from "./components/context/SimonProvider.js";
+import { SimonProvider } from "./context/SimonProvider.js";
 import reportWebVitals from "./reportWebVitals.js";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

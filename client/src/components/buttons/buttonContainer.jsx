@@ -1,5 +1,5 @@
 import { gameButtonAction } from "./gameButton";
-import { useSimon } from "../context/SimonProvider";
+import { useSimon } from "../../context/SimonProvider";
 
 export const Buttons = ({ yellowRef, redRef, blueRef, greenRef }) => {
   const { userPattern, setUserPattern } = useSimon();

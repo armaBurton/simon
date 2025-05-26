@@ -63,3 +63,9 @@ export const signOut = async () => {
 
   return res.ok();
 };
+
+export const getTopScores = async () => {
+  const res = await fetch(`${process.env.LOCAL_HOST}/api/v1/top-scores`);
+
+  return res.json();
+};

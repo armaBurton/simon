@@ -1,5 +1,5 @@
 import "../../views/Main/Main.css";
-import { useSimon } from "../context/SimonProvider";
+import { useSimon } from "../../context/SimonProvider";
 import { audio } from "./oscillator";
 
 export const usePlayback = () => {
