@@ -1,0 +1,19 @@
+{
+  "name": "full-stack-simon-app",
+  "version": "0.0.1",
+  "scripts": {
+    "db": "node db.js",
+    "server": "nodemon server.js",
+    "react": "npm start --prefix client"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "dotenv": "^16.5.0",
+    "nodemon": "^3.1.10"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "react": "^19.1.0",
+    "react-scripts": "^5.0.1"
+  }
+}
