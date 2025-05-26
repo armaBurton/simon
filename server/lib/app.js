@@ -3,9 +3,12 @@ const express = require("express");
 
 const app = express();
 
+const authRoutes = require("./auto-routes")
+
 //Built in middleware
 app.use(express.json());
 app.use(cookieParser());
+app.use(authRoutes)
 
 app.use("/api/v1/users", require("./controllers/users"));
 app.use("/api/v1/top_scores", require("./controllers/top_scores"));

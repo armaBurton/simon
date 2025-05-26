@@ -1,8 +1,16 @@
-import { createContext, useContext, useMemo, useState } from "react";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 
 const SimonContext = createContext();
 
 export const SimonProvider = ({ children }) => {
+  const [signInOrUp, setSignInOrUp] = useState(true);
   const [count, setCount] = useState(0);
   const [randoPattern, setRandoPattern] = useState([]);
   const [userPattern, setUserPattern] = useState([]);
@@ -25,11 +33,39 @@ export const SimonProvider = ({ children }) => {
       index,
       setIndex,
     }),
-    [count, randoPattern, userPattern, index, gameOn, playerTurn]
+    [signInOrUp, count, randoPattern, userPattern, index, gameOn, playerTurn]
   );
 
+  const login = async ({ username, pass }) => {
+    console.log("hit login from the Simon Provider", username, password);
+
+    console.log(`|| email: ${email}. password: ${password}`);
+    const authenticatedUser = await signInUser({ email, password });
+
+    if (authenticatedUser) setUser(authenticatedUser);
+  };
+
+  const signUp = async (email, password) => {
+    const newUser = await signUpUser({ email, password });
+
+    if (newUser) setUser(newUser);
+  };
+
+  const logOut = async (email, password) => {
+    const logoutUser = await signOutUser();
+
+    setUser(logoutUser);
+  };
+
+  const valuePlus = {
+    ...value,
+    login,
+    signUp,
+    logOut,
+  };
+
   return (
-    <SimonContext.Provider value={value}>{children}</SimonContext.Provider>
+    <SimonContext.Provider value={valuePlus}>{children}</SimonContext.Provider>
   );
 };
 
@@ -41,4 +77,8 @@ export const useSimon = () => {
   }
 
   return context;
+};
+
+export const simonContext = () => {
+  return useContext(SimonContext);
 };
