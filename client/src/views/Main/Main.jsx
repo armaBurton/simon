@@ -12,8 +12,8 @@ const Main = () => {
 
   return (
     <section className="mainSection">
-      <Simon />
-      {/* {simon.status === 401 ? simon.message : <Simon />} */}
+      {/* <Simon /> */}
+      {simon.status === 401 ? simon.message : <Simon />}
     </section>
   );
 };

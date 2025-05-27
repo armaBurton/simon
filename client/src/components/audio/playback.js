@@ -10,7 +10,7 @@ export const usePlayback = () => {
   };
 
   const getButtonTime = (length) => {
-    return length > 9 ? 300 : length > 4 ? 500 : 800;
+    return length > 9 ? 300 : length > 4 ? 550 : 800;
   };
 
   const addHighlight = async (button) => {
