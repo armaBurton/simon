@@ -11,7 +11,7 @@ Link to [Backend](https://github.com/armaBurton/simon/tree/Final_Project/server)
 ```npm run db```
 
 ### Start the postgreSQL server
-You may need to install [PostgreSQL](https://www.postgresql.org/)
+You may need to install [PostgreSQL](https://www.postgresql.org/)  
 ```npm run server```
 
 ### Start the React front end
