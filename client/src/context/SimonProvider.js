@@ -25,18 +25,18 @@ export const SimonProvider = ({ children }) => {
   const [index, setIndex] = useState(0);
 
   // USER AUTH FUNCTIONS
-  const login = useCallback(async ({ username, password }) => {
+  const login = useCallback(async ({ email, password }) => {
     try {
-      const user = await signIn({ username, password });
+      const user = await signIn({ email, password });
       setUser(user);
     } catch (err) {
       throw err;
     }
   }, []);
 
-  const newUser = useCallback(async ({ username, password }) => {
+  const newUser = useCallback(async ({ email, password }) => {
     try {
-      const user = await signUp(username, password);
+      const user = await signUp(email, password);
       setUser(user);
     } catch (err) {
       throw err;

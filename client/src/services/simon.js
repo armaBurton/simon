@@ -26,13 +26,13 @@ export const getUserById = async (id) => {
   }
 };
 
-export const signUp = async (username, password) => {
+export const signUp = async (email, password) => {
   const res = await fetch(`${process.env.LOCAL_HOST}/api/v1/users/signup`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     credentials: "include",
     mode: "cors",
-    body: JSON.stringify({ username, password }),
+    body: JSON.stringify({ email, password }),
   });
 
   if (!res.ok) throw new Error("something something something");
@@ -40,15 +40,15 @@ export const signUp = async (username, password) => {
   return res.json();
 };
 
-export const signIn = async (username, password) => {
+export const signIn = async (email, password) => {
   const res = await fetch(`http://localhost:7890/api/v1/users`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     credentials: "include",
     mode: "cors",
-    body: JSON.stringify({ username, password }),
+    body: JSON.stringify({ email, password }),
   });
-  if (!res.ok) throw new Error("Invalid username or password");
+  if (!res.ok) throw new Error("Invalid email or password");
 
   return res.json();
 };
