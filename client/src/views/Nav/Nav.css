@@ -1,8 +1,3 @@
-Link,
-li {
-  cursor: pointer;
-}
-
 .navbar {
   width: 100%;
   height: 50px;
@@ -16,11 +11,24 @@ li {
 }
 
 .navList {
+  cursor: pointer;
   display: flex;
   gap: 20px;
 }
 
 .navElement {
-  cursor: pointer;
   list-style-type: none;
+  display: flex;
+  align-items: center;
+}
+
+.linkTo {
+  display: flex;
+  background-color: rgba(0, 255, 0, 0.2);
+  font-size: 150%;
+  text-decoration: none;
+}
+
+.linkTo:hover {
+  color: var(--bright-green);
 }

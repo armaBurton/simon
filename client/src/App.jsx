@@ -27,8 +27,8 @@ const router = createBrowserRouter([
       {
         element: <PrivateRoutes />,
         children: [
-          { path: "Hidden", element: <Hidden /> },
-          { path: "Simon", element: <Simon /> },
+          { path: "hidden", element: <Hidden /> },
+          { path: "simon", element: <Simon /> },
         ],
       },
     ],

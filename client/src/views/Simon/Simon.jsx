@@ -4,8 +4,7 @@ import { Buttons } from "../../components/buttons/buttonContainer";
 import { useSimon } from "../../context/SimonProvider";
 import { usePlayback } from "../../components/audio/playback";
 import simonLogo from "../../assets/simon_white.png";
-// import { Nav } from "../../Nav/Nav";
-import { Nav } from "../../components/Nav/Nav";
+import { Nav } from "../Nav/Nav";
 
 const Simon = () => {
   const {
