@@ -5,5 +5,5 @@ import { useSimon } from "../../context/SimonProvider";
 export const PrivateRoutes = () => {
   const simon = useSimon();
 
-  return simon.email ? <Outlet /> : <Navigate to="/main" />;
+  return simon?.email ? <Outlet /> : <Navigate to="/signin" replace />;
 };

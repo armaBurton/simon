@@ -1,9 +1,10 @@
+// Layout.jsx
 import "./Layout.css";
 import { Header } from "./Header/Header";
 import { SimonStatus } from "./SimonStatus/SimonStatus";
 import { Outlet } from "react-router-dom";
 
-export const Layout = () => {
+const Layout = () => {
   return (
     <>
       <section className="layoutSection">
@@ -17,3 +18,5 @@ export const Layout = () => {
     </>
   );
 };
+
+export default Layout;
