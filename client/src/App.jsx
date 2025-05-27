@@ -13,7 +13,7 @@ import Main from "./views/Main/Main";
 import { SignUp } from "./views/Users/SignUp";
 import { PrivateRoutes } from "./components/PrivateRoutes/PrivateRoutes";
 import { Hidden } from "./views/Hidden/Hidden";
-import Simon from "./components/Simon/Simon";
+import Simon from "./views/Simon/Simon";
 
 const router = createBrowserRouter([
   {

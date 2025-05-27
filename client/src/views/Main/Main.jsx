@@ -1,6 +1,6 @@
 // Main.jsx
 import "./Main.css";
-import Simon from "../../components/Simon/Simon";
+import Simon from "../Simon/Simon";
 import { useSimon } from "../../context/SimonProvider";
 // import { Navigate, useLocation } from "react-router";
 
