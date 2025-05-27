@@ -21,16 +21,18 @@
   flex-wrap: wrap;
   align-content: center;
   justify-content: center;
-  gap: 30px;
+  gap: 4.5%;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
 }
 
 .game-button {
-  min-height: 42%;
+  height: 42%;
+  width: 42%;
+  /* min-height: 42%;
   max-width: 42%;
   max-height: 42%;
-  min-width: 42%;
+  min-width: 42%; */
   /* min-height: 325px;
   max-width: 325px;
   max-height: 325px;
@@ -163,7 +165,7 @@
 }
 
 .score-label {
-  font-size: 200%;
+  font-size: 3vh;
   color: var(--bright-red);
 }
 
@@ -175,10 +177,11 @@
   align-items: center;
   justify-content: flex-end;
   padding: 0 0.5em 0.5em 0.5em;
+  border-radius: 5px;
 }
 
 .count {
-  font-size: 320%;
+  font-size: 4.5vh;
   color: #111111;
 }
 
@@ -191,7 +194,7 @@
   position: fixed;
   left: 0;
   bottom: 5px;
-  padding-bottom: 3rem;
+  padding-bottom: 2rem;
   padding-left: 3rem;
 }
 
@@ -205,6 +208,7 @@
   cursor: pointer;
   padding-top: 5px;
   border: none;
+  border-radius: 5px;
 }
 
 .start-button {
