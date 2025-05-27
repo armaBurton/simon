@@ -1,0 +1,237 @@
+.mainSection {
+  min-width: 100%;
+  height: 100vh;
+  background-color: orange;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+}
+
+.simon-body {
+  border-radius: 50%;
+  /* height: 48rem; */
+  height: 80%;
+  aspect-ratio: 1/1;
+
+  /* width: 750px; */
+  background-color: #111111;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  gap: 4.5%;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+.game-button {
+  height: 42%;
+  width: 42%;
+  /* min-height: 42%;
+  max-width: 42%;
+  max-height: 42%;
+  min-width: 42%; */
+  /* min-height: 325px;
+  max-width: 325px;
+  max-height: 325px;
+  min-width: 325px; */
+  z-index: 1;
+  cursor: pointer;
+}
+
+.yellow {
+  border-top-left-radius: 1000%;
+  border-bottom-left-radius: 15%;
+  border-top-right-radius: 15%;
+  background-color: var(--dim-yellow);
+}
+
+.b-yellow {
+  background-color: var(--bright-yellow);
+}
+
+.yellow:hover {
+  background-color: var(--bright-yellow);
+}
+
+.yellow:active {
+  background-color: var(--press-yellow);
+}
+
+.yellowHighlight {
+  background-color: var(--press-yellow);
+}
+
+.red {
+  border-top-right-radius: 1000%;
+  background-color: var(--dim-red);
+  border-bottom-right-radius: 15%;
+  border-top-left-radius: 15%;
+}
+
+.red:hover {
+  background-color: var(--bright-red);
+}
+
+.red:active {
+  background-color: var(--press-red);
+}
+
+.redHighlight {
+  background-color: var(--press-red);
+}
+
+.blue {
+  border-bottom-left-radius: 1000%;
+  background-color: var(--dim-blue);
+  border-top-left-radius: 15%;
+  border-bottom-right-radius: 15%;
+}
+
+.blue:hover {
+  background-color: var(--bright-blue);
+}
+
+.blue:active {
+  background-color: var(--press-blue);
+}
+
+.blueHighlight {
+  background-color: var(--press-blue);
+}
+
+.green {
+  border-bottom-right-radius: 1000%;
+  background-color: var(--dim-green);
+  border-bottom-left-radius: 15%;
+  border-top-right-radius: 15%;
+}
+
+.green:hover {
+  background-color: var(--bright-green);
+}
+
+.green:active {
+  background-color: var(--press-green);
+}
+
+.greenHighlight {
+  background-color: var(--press-green);
+}
+
+.disable {
+  pointer-events: none;
+}
+
+.center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  height: 32%;
+  aspect-ratio: 1/1;
+  /* width: 40%; */
+  border-radius: 50%;
+  background-color: #111111;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.simon_logo {
+  width: 80%;
+}
+
+.title {
+  font-size: 5rem;
+  color: white;
+  z-index: 3;
+  margin-top: 40px;
+  text-align: center;
+}
+
+.score-container {
+  display: flex;
+  gap: 7%;
+  align-items: center;
+  justify-content: center;
+  padding-top: 10%;
+  height: 24%;
+  margin-top: 3%;
+}
+
+.score-label {
+  font-size: 4.5vh;
+  color: var(--bright-red);
+}
+
+.score-counter {
+  background-color: white;
+  height: 160%;
+  aspect-ratio: 1.55/1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 3% 3% 3%;
+  /* padding: 0 0.5em 0.5em 0.5em; */
+  border-radius: 5px;
+}
+
+.count {
+  font-size: 5.5vh;
+  color: #111111;
+}
+
+.button-container {
+  height: 100vh;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  gap: 1rem;
+  position: fixed;
+  left: 0;
+  bottom: 5px;
+  padding-bottom: 2rem;
+  padding-left: 3rem;
+}
+
+.control-buttons {
+  width: 100px;
+  height: 55px;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  font-size: 2rem;
+  cursor: pointer;
+  padding-top: 5px;
+  border: none;
+  border-radius: 5px;
+}
+
+.start-button {
+  background-color: var(--dim-green);
+}
+
+.start-button:hover {
+  background-color: var(--bright-green);
+}
+
+.start-button:active {
+  background-color: var(--press-green);
+}
+
+.reset-button {
+  background-color: var(--dim-red);
+}
+
+.reset-button:hover {
+  background-color: var(--bright-red);
+}
+
+.reset-button:active {
+  background-color: var(--press-red);
+}

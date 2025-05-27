@@ -1,0 +1,104 @@
+import "../../views/Main/Main.css";
+import { useSimon } from "../../context/SimonProvider";
+import { audio } from "./oscillator";
+
+export const usePlayback = () => {
+  const { setIndex } = useSimon();
+
+  const getTime = (length) => {
+    return length > 9 ? 500 : length > 4 ? 750 : 1000;
+  };
+
+  const getButtonTime = (length) => {
+    return length > 9 ? 300 : length > 4 ? 550 : 800;
+  };
+
+  const addHighlight = async (button) => {
+    console.log("Add: ", button);
+    switch (button.current.id) {
+      case "yellow":
+        await button.current.classList.add("yellowHighlight");
+        break;
+      case "red":
+        await button.current.classList.add("redHighlight");
+        break;
+      case "blue":
+        await button.current.classList.add("blueHighlight");
+        break;
+      case "green":
+        await button.current.classList.add("greenHighlight");
+        break;
+      default:
+        break;
+    }
+  };
+
+  const removeHighlight = async (button) => {
+    console.log("Remove: ", button);
+    switch (button.current.id) {
+      case "yellow":
+        await button.current.classList.remove("yellowHighlight");
+        break;
+      case "red":
+        await button.current.classList.remove("redHighlight");
+        break;
+      case "blue":
+        await button.current.classList.remove("blueHighlight");
+        break;
+      case "green":
+        await button.current.classList.remove("greenHighlight");
+        break;
+      default:
+        break;
+    }
+  };
+
+  const timeout = async (i, sequence, length, setIndex, buttonRef) => {
+    return new Promise((resolve) => {
+      const timer = getTime(length);
+      const highlightDuration = getButtonTime(length);
+
+      setIndex(sequence[i]);
+
+      if (buttonRef.current) {
+        addHighlight(buttonRef);
+      }
+
+      sequence[i] === 1
+        ? audio("yellow")
+        : sequence[i] === 2
+        ? audio("red")
+        : sequence[i] === 3
+        ? audio("blue")
+        : audio("green");
+
+      setTimeout(() => {
+        if (buttonRef.current) {
+          removeHighlight(buttonRef);
+        }
+        setIndex(0);
+      }, highlightDuration);
+
+      setTimeout(() => {
+        resolve();
+      }, timer);
+    });
+  };
+
+  const playSequence = async (randoPattern, refs, buttonMouseEvents) => {
+    for (let i = 0; i < randoPattern.length; i++) {
+      const buttonRef = {
+        1: refs.yellowRef,
+        2: refs.redRef,
+        3: refs.blueRef,
+        4: refs.greenRef,
+      }[randoPattern[i]];
+
+      buttonMouseEvents.current.style.pointerEvents = "none";
+      await timeout(i, randoPattern, randoPattern.length, setIndex, buttonRef);
+      buttonMouseEvents.current.style.pointerEvents = "auto";
+    }
+  };
+
+  return { timeout, getTime, playSequence };
+};
