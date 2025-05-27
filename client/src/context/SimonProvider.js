@@ -87,13 +87,18 @@ export const SimonProvider = ({ children }) => {
       // USER
       loading,
       user,
-      //SIMON
+      // SIMON
       count,
       randoPattern,
       userPattern,
       gameOn,
       playerTurn,
       index,
+      // AUTH
+      login,
+      newUser,
+      setUserNull,
+      logout,
     ]
   );
 
@@ -117,7 +122,7 @@ export const useSimon = () => {
 export const useAuth = () => {
   const context = useContext(SimonContext);
 
-  if (context == undefined)
+  if (context === undefined)
     throw new Error("useAuth, must be used withing a UserProvider");
 
   return {

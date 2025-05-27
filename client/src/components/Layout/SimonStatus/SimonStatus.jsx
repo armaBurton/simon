@@ -11,7 +11,7 @@ export const SimonStatus = () => {
   const [thisSimonUser, setThisSimonUser] = useState(simonUser);
 
   useEffect(() => {
-    setThisSimonUser(user);
+    setThisSimonUser(simonUser);
   }, [simonUser]);
 
   const handleLogout = async (e) => {
@@ -42,7 +42,7 @@ export const SimonStatus = () => {
             <Link className="nav-style">hello_{thisSimonUser?.email}</Link>
           </p>
           <p>
-            <Link to="/signout" className="nav-style">
+            <Link to="/signout" className="nav-style" onClick={handleLogout}>
               sign_out
             </Link>
           </p>

@@ -1,4 +1,4 @@
-import "./Main.css";
+import "./Simon.css";
 import { useEffect, useRef } from "react";
 import { Buttons } from "../../components/buttons/buttonContainer";
 import { useSimon } from "../../context/SimonProvider";
@@ -16,7 +16,7 @@ import { Nav } from "../Nav/Nav";
 //   );
 // };
 
-export const Main = () => {
+const Simon = () => {
   const {
     count,
     setCount,
@@ -24,11 +24,11 @@ export const Main = () => {
     setRandoPattern,
     userPattern,
     setUserPattern,
-    gameOn,
-    setGameOn,
+    // gameOn,
+    // setGameOn,
     playerTurn,
     setPlayerTurn,
-    index,
+    // index,
     setIndex,
   } = useSimon();
 
@@ -73,6 +73,7 @@ export const Main = () => {
         }
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userPattern, randoPattern, count]);
 
   const handleStart = () => {
@@ -132,3 +133,5 @@ export const Main = () => {
     </section>
   );
 };
+
+export default Simon;

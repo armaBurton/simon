@@ -6,12 +6,12 @@ import { Outlet } from "react-router-dom";
 export const Layout = () => {
   return (
     <>
-      <section>
+      <section className="layoutSection">
         <Header>
           <SimonStatus />
         </Header>
       </section>
-      <section>
+      <section className="layoutSection">
         <Outlet />
       </section>
     </>

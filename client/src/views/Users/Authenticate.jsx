@@ -1,5 +1,5 @@
 // Authenticate.jsx
-import ".Authenticate.css";
+import "./Authenticate.css";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSimon, useAuth } from "../../context/SimonProvider";
@@ -14,6 +14,7 @@ export const Authenticate = () => {
 
   useEffect(() => {
     if (simon?.email) navigate("/simon", { replace: true });
+    //eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleSubmit = async (e) => {
@@ -29,12 +30,16 @@ export const Authenticate = () => {
 
   const handleClick = (e) => {
     e.preventDefault();
-    !email && !password
-      ? setError("Please enter an email or password.")
-      : () => {
-          setError("");
-          handleSubmit(e);
-        };
+    if (!email && !password) {
+      setError("Please enter an email and password.");
+    } else if (!email && password) {
+      setError("Please enter an email.");
+    } else if (email && !password) {
+      setError("Please enter a password");
+    } else {
+      setError("");
+      handleSubmit(e);
+    }
   };
 
   return (
