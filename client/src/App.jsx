@@ -40,22 +40,3 @@ const App = () => {
 };
 
 export default App;
-
-// const App = () => {
-//   const router = createBrowserRouter(
-//     createRoutesFromElements(
-//       <Route path="/" element={<Layout />}>
-//         <Route index element={<Navigate to="/main" />} />
-//         <Route path="/main" element={<Main />} />
-//         <Route path="/signin" element={<Authenticate />} />
-//         <Route path="/signup" element={<SignUp />} />
-//         <Route element={<PrivateRoutes />}>
-//           <Route path="/Hidden" element={<Hidden />} />
-//           <Route path="/Simon" element={<Simon />} />
-//         </Route>
-//       </Route>
-//     )
-//   );
-
-//   return <RouterProvider router={router} />;
-// };
