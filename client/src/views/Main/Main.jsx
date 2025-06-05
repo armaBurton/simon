@@ -1,21 +1,26 @@
 // Main.jsx
 import "./Main.css";
-import Simon from "../Simon/Simon";
-import { useSimon } from "../../context/SimonProvider";
+import { Simon } from "../Simon/Simon";
+import { useCurrentSimon } from "../../context/SimonProvider";
 // import { Navigate, useLocation } from "react-router";
 
-const Main = () => {
-  const simon = useSimon();
+export const Main = () => {
+  const simon = useCurrentSimon();
   // const location = useLocation();
 
-  simon.status = 200;
+  if (!simon) return <div className="mainSection">Loading...</div>;
+
+  // simon.status = 200;
 
   return (
     <section className="mainSection">
       {/* <Simon /> */}
-      {simon.status === 401 ? simon.message : <Simon />}
+      {simon?.status === 401 ? (
+        simon.message
+      ) : (
+        <Simon simon={simon} />
+        // <Simon simon={simon} currentSelected={location.state?.from} />
+      )}
     </section>
   );
 };
-
-export default Main;

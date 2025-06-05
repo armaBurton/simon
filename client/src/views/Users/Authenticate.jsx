@@ -2,14 +2,14 @@
 import "./Authenticate.css";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useSimon, useAuth } from "../../context/SimonProvider";
+import { useCurrentSimon, useAuth } from "../../context/SimonProvider";
 
 export const Authenticate = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
-  const simon = useSimon();
+  const simon = useCurrentSimon();
   const { login } = useAuth();
 
   useEffect(() => {

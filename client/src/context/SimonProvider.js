@@ -25,31 +25,57 @@ export const SimonProvider = ({ children }) => {
   const [index, setIndex] = useState(0);
 
   // USER AUTH FUNCTIONS
-  const login = useCallback(async ({ email, password }) => {
+  const login = async ({ email, password }) => {
     try {
-      const user = await signIn({ email, password });
+      const user = await signIn(email, password);
       setUser(user);
     } catch (err) {
       throw err;
     }
-  }, []);
+  };
 
-  const newUser = useCallback(async ({ email, password }) => {
+  const newUser = async ({ email, password }) => {
     try {
       const user = await signUp(email, password);
       setUser(user);
     } catch (err) {
       throw err;
     }
-  }, []);
+  };
 
   const setUserNull = useCallback(() => {
     setUser(null);
-  }, []);
+  });
 
   const logout = useCallback(() => {
-    signOut().then(() => setUser(null));
-  }, []);
+    signOut.then(() => setUser(null));
+  });
+
+  // const login = useCallback(async ({ email, password }) => {
+  //   try {
+  //     const user = await signIn(email, password);
+  //     setUser(user);
+  //   } catch (err) {
+  //     throw err;
+  //   }
+  // }, []);
+
+  // const newUser = useCallback(async ({ email, password }) => {
+  //   try {
+  //     const user = await signUp(email, password);
+  //     setUser(user);
+  //   } catch (err) {
+  //     throw err;
+  //   }
+  // }, []);
+
+  // const setUserNull = useCallback(() => {
+  //   setUser(null);
+  // }, []);
+
+  // const logout = useCallback(() => {
+  //   signOut().then(() => setUser(null));
+  // }, []);
 
   useEffect(() => {
     getCurrentUser()
@@ -109,11 +135,11 @@ export const SimonProvider = ({ children }) => {
   );
 };
 
-export const useSimon = () => {
+export const useCurrentSimon = () => {
   const context = useContext(SimonContext);
 
-  if (context === undefined) {
-    throw new Error(`useSimon must be used within a SimonProvider`);
+  if (!context) {
+    throw new Error(`useCurrentSimon must be used within a SimonProvider`);
   }
 
   return context;
@@ -123,7 +149,7 @@ export const useAuth = () => {
   const context = useContext(SimonContext);
 
   if (context === undefined)
-    throw new Error("useAuth, must be used withing a UserProvider");
+    throw new Error("useAuth, must be used withing a SimonProvider");
 
   return {
     logout: context.logout,

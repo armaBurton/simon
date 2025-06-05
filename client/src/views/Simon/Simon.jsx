@@ -1,12 +1,13 @@
 import "./Simon.css";
 import { useEffect, useRef } from "react";
+// import { Link } from "react-router-dom";
 import { Buttons } from "../../components/buttons/buttonContainer";
-import { useSimon } from "../../context/SimonProvider";
+import { useCurrentSimon } from "../../context/SimonProvider";
 import { usePlayback } from "../../components/audio/playback";
 import simonLogo from "../../assets/simon_white.png";
 import { Nav } from "../Nav/Nav";
 
-const Simon = () => {
+export const Simon = () => {
   const {
     count,
     setCount,
@@ -20,7 +21,7 @@ const Simon = () => {
     setPlayerTurn,
     // index,
     setIndex,
-  } = useSimon();
+  } = useCurrentSimon();
 
   const yellowRef = useRef(null);
   const redRef = useRef(null);
@@ -124,4 +125,4 @@ const Simon = () => {
   );
 };
 
-export default Simon;
+// export default Simon;

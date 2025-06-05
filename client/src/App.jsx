@@ -7,13 +7,13 @@ import {
   RouterProvider,
   Navigate,
 } from "react-router-dom";
-import Layout from "./components/Layout/Layout";
+import { Layout } from "./components/Layout/Layout";
 import { Authenticate } from "./views/Users/Authenticate";
-import Main from "./views/Main/Main";
+import { Main } from "./views/Main/Main";
 import { SignUp } from "./views/Users/SignUp";
 import { PrivateRoutes } from "./components/PrivateRoutes/PrivateRoutes";
 import { Hidden } from "./views/Hidden/Hidden";
-import Simon from "./views/Simon/Simon";
+import { Simon } from "./views/Simon/Simon";
 
 const router = createBrowserRouter([
   {

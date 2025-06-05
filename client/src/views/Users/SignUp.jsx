@@ -1,7 +1,7 @@
 // SignUp.jsx
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth, useSimon } from "../../context/SimonProvider";
+import { useAuth, useCurrentSimon } from "../../context/SimonProvider";
 
 export const SignUp = () => {
   const [email, setEmail] = useState("");
@@ -9,7 +9,7 @@ export const SignUp = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
-  const simon = useSimon();
+  const simon = useCurrentSimon();
   const { newUser } = useAuth();
 
   useEffect(() => {

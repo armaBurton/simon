@@ -1,9 +1,9 @@
 // PrivateRoutes.jsx
 import { Navigate, Outlet } from "react-router";
-import { useSimon } from "../../context/SimonProvider";
+import { useCurrentSimon } from "../../context/SimonProvider";
 
 export const PrivateRoutes = () => {
-  const simon = useSimon();
+  const simon = useCurrentSimon();
 
-  return simon?.email ? <Outlet /> : <Navigate to="/signin" replace />;
+  return simon?.email ? <Outlet /> : <Navigate to="/main" />;
 };

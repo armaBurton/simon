@@ -4,7 +4,7 @@
   "scripts": {
     "db": "node db.js",
     "server": "nodemon server.js",
-    "react": "npm start --prefix client"
+    "client": "npm start --prefix client"
   },
   "devDependencies": {
     "concurrently": "^9.1.2",

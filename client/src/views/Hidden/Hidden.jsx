@@ -1,9 +1,9 @@
 // Hidden.jsx
 import "./Hidden.css";
-import { useSimon } from "../../context/SimonProvider";
+import { useCurrentSimon } from "../../context/SimonProvider";
 
 export const Hidden = () => {
-  const simon = useSimon();
+  const simon = useCurrentSimon();
 
   return (
     <section className="hidden-section">

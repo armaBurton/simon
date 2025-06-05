@@ -1,12 +1,12 @@
 // SignOut.jsx
-import { useAuth, useSimon } from "../../context/SimonProvider";
+import { useAuth, useCurrentSimon } from "../../context/SimonProvider";
 import { useNavigate } from "react-router-dom";
 
 export const SignOut = async () => {
   const { logout } = useAuth();
   const navigate = useNavigate();
-  const simon = useSimon();
-  const setUserNull = useSimon();
+  const simon = useCurrentSimon();
+  const setUserNull = useCurrentSimon();
 
   const handleLogout = async () => {
     try {

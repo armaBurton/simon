@@ -1,12 +1,12 @@
 // SimonStatus.jsx
 import "./SimonStatus.css";
 import { Link } from "react-router-dom";
-import { useSimon } from "../../../context/SimonProvider";
+import { useCurrentSimon } from "../../../context/SimonProvider";
 import { signOut } from "../../../services/simon";
 import { useEffect, useState } from "react";
 
 export const SimonStatus = () => {
-  const simonUser = useSimon();
+  const simonUser = useCurrentSimon();
 
   const [thisSimonUser, setThisSimonUser] = useState(simonUser);
 

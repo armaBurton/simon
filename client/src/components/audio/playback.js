@@ -1,9 +1,9 @@
 import "../../views/Main/Main.css";
-import { useSimon } from "../../context/SimonProvider";
+import { useCurrentSimon } from "../../context/SimonProvider";
 import { audio } from "./oscillator";
 
 export const usePlayback = () => {
-  const { setIndex } = useSimon();
+  const { setIndex } = useCurrentSimon();
 
   const getTime = (length) => {
     return length > 9 ? 500 : length > 4 ? 750 : 1000;
