@@ -21,9 +21,9 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       { index: true, element: <Navigate to="/main" /> },
-      { path: "main", element: <Main /> },
       { path: "signin", element: <Authenticate /> },
       { path: "signup", element: <SignUp /> },
+      { path: "main", element: <Main /> },
       {
         element: <PrivateRoutes />,
         children: [

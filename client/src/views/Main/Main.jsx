@@ -2,6 +2,7 @@
 import "./Main.css";
 import { Simon } from "../Simon/Simon";
 import { useCurrentSimon } from "../../context/SimonProvider";
+import { Navigate } from "react-router";
 // import { Navigate, useLocation } from "react-router";
 
 export const Main = () => {
@@ -16,7 +17,7 @@ export const Main = () => {
     <section className="mainSection">
       {/* <Simon /> */}
       {simon?.status === 401 ? (
-        simon.message
+        <Navigate to="/signin" replace />
       ) : (
         <Simon simon={simon} />
         // <Simon simon={simon} currentSelected={location.state?.from} />

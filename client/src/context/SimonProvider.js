@@ -51,32 +51,6 @@ export const SimonProvider = ({ children }) => {
     signOut.then(() => setUser(null));
   });
 
-  // const login = useCallback(async ({ email, password }) => {
-  //   try {
-  //     const user = await signIn(email, password);
-  //     setUser(user);
-  //   } catch (err) {
-  //     throw err;
-  //   }
-  // }, []);
-
-  // const newUser = useCallback(async ({ email, password }) => {
-  //   try {
-  //     const user = await signUp(email, password);
-  //     setUser(user);
-  //   } catch (err) {
-  //     throw err;
-  //   }
-  // }, []);
-
-  // const setUserNull = useCallback(() => {
-  //   setUser(null);
-  // }, []);
-
-  // const logout = useCallback(() => {
-  //   signOut().then(() => setUser(null));
-  // }, []);
-
   useEffect(() => {
     getCurrentUser()
       .then(setUser)

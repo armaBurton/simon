@@ -2,4 +2,5 @@
 .auth-div {
   display: flex;
   gap: 20px;
+  width: 40%;
 }

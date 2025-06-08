@@ -1,1 +1,131 @@
 /* Authenticate.css */
+.formSection {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 100px;
+}
+
+.authForm,
+.autoForm {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: 15px;
+  border-top: 4px solid;
+
+  border-image: linear-gradient(
+    to right,
+    var(--bright-green) 0%,
+    var(--bright-green) 25%,
+    var(--bright-red) 25%,
+    var(--bright-red) 50%,
+    var(--bright-yellow) 50%,
+    var(--bright-yellow) 75%,
+    var(--bright-blue) 75%,
+    var(--bright-blue) 100%
+  );
+  border-image-slice: 1;
+}
+
+.formItem {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  gap: 5px;
+}
+
+.small {
+  margin-bottom: 5px;
+}
+
+.medium {
+  margin-bottom: 15px;
+}
+
+.big {
+  margin-bottom: 40px;
+}
+
+.sign_in,
+.create_player,
+.new_player,
+.return_user {
+  cursor: pointer;
+  padding: 5px 8px;
+  border-radius: 5px;
+  width: auto;
+  margin-bottom: 10px;
+  background-color: var(--dim-green);
+  color: orange;
+  border: none;
+  margin-bottom: 15px;
+  width: 100px;
+}
+
+.sign_in {
+  cursor: pointer;
+  background-color: var(--bright-green);
+}
+
+.sign_in:hover {
+  background-color: var(--press-green);
+}
+
+.sign_in:active {
+  background-color: var(--dim-green);
+}
+
+.new_player {
+  background-color: var(--bright-blue);
+}
+
+.new_player:hover {
+  background-color: var(--press-blue);
+}
+
+.new_player:active {
+  background-color: var(--dim-blue);
+}
+
+.return_user {
+  cursor: pointer;
+  background-color: var(--bright-red);
+  color: var(--bright-blue);
+}
+
+.return_user:hover {
+  background-color: var(--press-red);
+  color: var(--bright-blue);
+}
+
+.return_user:active {
+  background-color: var(--dim-red);
+  color: var(--bright-blue);
+}
+
+.create_player {
+  cursor: pointer;
+  background-color: var(--bright-yellow);
+  color: var(--bright-blue);
+}
+
+.create_player:hover {
+  background-color: var(--dim-yellow);
+  color: var(--bright-blue);
+}
+
+.create_player:active {
+  background-color: var(--press-yellow);
+  color: var(--bright-blue);
+}
+
+.simonLogo {
+  width: 20%;
+  margin-bottom: 15px;
+}

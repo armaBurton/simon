@@ -3,6 +3,7 @@ import "./Authenticate.css";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCurrentSimon, useAuth } from "../../context/SimonProvider";
+import simonLogo from "../../assets/simon_black.png";
 
 export const Authenticate = () => {
   const [email, setEmail] = useState("");
@@ -42,39 +43,61 @@ export const Authenticate = () => {
     }
   };
 
+  const handleNewPlayer = (e) => {
+    e.preventDefault();
+
+    navigate("/signup", { replace: true });
+  };
+
   return (
     <section className="formSection">
+      <img src={simonLogo} alt="simon logo" className="simonLogo" />
+
       <form action="" className="authForm">
-        <label htmlFor="email"> email </label>
-        <input
-          type="text"
-          id="email"
-          name="email"
-          placeholder="email"
-          value={email}
-          onChange={({ target }) => {
-            setEmail(target.value);
-          }}
-        />
-        <label htmlFor="password"> password </label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          placeholder="password"
-          value={password}
-          onChange={({ target }) => {
-            setPassword(target.value);
-          }}
-        />
-        <button
-          type="submit"
-          className="row"
-          aria-disabled={!email || !password}
-          onClick={handleClick}
-        >
-          sign_in
-        </button>
+        <div className="formItem small">
+          <label htmlFor="email"> email </label>
+          <input
+            type="text"
+            id="email"
+            name="email"
+            placeholder="email"
+            value={email}
+            onChange={({ target }) => {
+              setEmail(target.value);
+            }}
+          />
+        </div>
+        <div className="formItem big">
+          <label htmlFor="password"> password </label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="password"
+            value={password}
+            onChange={({ target }) => {
+              setPassword(target.value);
+            }}
+          />
+        </div>
+        <div className="formItem">
+          <button
+            type="submit"
+            className="row new_player"
+            aria-disabled={!email || !password}
+            onClick={handleNewPlayer}
+          >
+            new_player
+          </button>
+          <button
+            type="submit"
+            className="row sign_in"
+            aria-disabled={!email || !password}
+            onClick={handleClick}
+          >
+            sign_in
+          </button>
+        </div>
         <p className="row">{error}</p>
       </form>
     </section>

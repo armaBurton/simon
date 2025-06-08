@@ -6,9 +6,13 @@ export const getCurrentUser = async () => {
       credentials: "include",
       mode: "cors",
     });
-    return res.json();
+    const data = await res.json();
+    console.log("getCurrentUser->", data);
+
+    return res.ok ? data : null;
   } catch (error) {
-    console.error(error);
+    console.error("getCurrentUser failed:", error);
+    return null;
   }
 };
 

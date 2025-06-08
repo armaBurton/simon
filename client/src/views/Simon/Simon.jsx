@@ -1,5 +1,6 @@
 import "./Simon.css";
 import { useEffect, useRef } from "react";
+import { Navigate } from "react-router";
 // import { Link } from "react-router-dom";
 import { Buttons } from "../../components/buttons/buttonContainer";
 import { useCurrentSimon } from "../../context/SimonProvider";
@@ -21,6 +22,8 @@ export const Simon = () => {
     setPlayerTurn,
     // index,
     setIndex,
+    user,
+    setUser,
   } = useCurrentSimon();
 
   const yellowRef = useRef(null);
@@ -66,7 +69,7 @@ export const Simon = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userPattern, randoPattern, count]);
-
+  if (!user?.email) return <Navigate to="/signin" />;
   const handleStart = () => {
     setCount(1);
     setRandoPattern([]);
