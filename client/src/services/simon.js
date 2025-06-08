@@ -9,7 +9,9 @@ export const getCurrentUser = async () => {
     const data = await res.json();
     console.log("getCurrentUser->", data);
 
-    return res.ok ? data : null;
+    if (!res.ok) throw new Error("Not Authenticated");
+    return data;
+    // return res.ok ? data : throw new Error("Not authenticated");
   } catch (error) {
     console.error("getCurrentUser failed:", error);
     return null;
@@ -31,7 +33,7 @@ export const getUserById = async (id) => {
 };
 
 export const signUp = async (email, password) => {
-  const res = await fetch(`${process.env.LOCAL_HOST}/api/v1/users/signup`, {
+  const res = await fetch(`http://localhost:7890/api/v1/users/signup`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     credentials: "include",
@@ -39,7 +41,7 @@ export const signUp = async (email, password) => {
     body: JSON.stringify({ email, password }),
   });
 
-  if (!res.ok) throw new Error("something something something");
+  if (!res.ok) throw new Error("Signup failed");
 
   return res.json();
 };

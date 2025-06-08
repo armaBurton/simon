@@ -20,6 +20,8 @@ module.exports = class User {
     `,
       [email, passwordHash]
     );
+        if (!rows[0]) return null;
+    return new User(rows[0]);
   }
 
   static async getAll() {

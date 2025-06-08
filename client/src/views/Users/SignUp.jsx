@@ -27,6 +27,7 @@ export const SignUp = () => {
     } catch (err) {
       setError(err);
       console.error(err);
+
       navigate("/main", { replace: true });
     }
   };
@@ -94,7 +95,7 @@ export const SignUp = () => {
             }}
           />
         </div>
-        <div className="formItem">
+        <div className="formItem buttonContainer">
           <button
             type="submit"
             className="row return_user"

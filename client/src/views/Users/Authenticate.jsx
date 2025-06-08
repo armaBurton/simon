@@ -80,7 +80,7 @@ export const Authenticate = () => {
             }}
           />
         </div>
-        <div className="formItem">
+        <div className="formItem buttonContainer">
           <button
             type="submit"
             className="row new_player"
