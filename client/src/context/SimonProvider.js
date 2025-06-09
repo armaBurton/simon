@@ -24,6 +24,25 @@ export const SimonProvider = ({ children }) => {
   const [playerTurn, setPlayerTurn] = useState(false);
   const [index, setIndex] = useState(0);
 
+  useEffect(() => {
+    let isMounted = true;
+    const fetchUser = async () => {
+      try {
+        const user = await getCurrentUser();
+        if (isMounted) setUser(user);
+      } catch (err) {
+        console.error(err);
+      } finally {
+        if (isMounted) setLoading(false);
+      }
+    };
+    fetchUser();
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
   // USER AUTH FUNCTIONS
   const login = async ({ email, password }) => {
     try {
@@ -50,12 +69,6 @@ export const SimonProvider = ({ children }) => {
   const logout = useCallback(() => {
     signOut.then(() => setUser(null));
   });
-
-  useEffect(() => {
-    getCurrentUser()
-      .then(setUser)
-      .finally(() => setLoading(false));
-  }, []);
 
   const value = useMemo(
     () => ({
@@ -107,6 +120,17 @@ export const SimonProvider = ({ children }) => {
       {renderView({ ...value, children })}
     </SimonContext.Provider>
   );
+};
+
+export const getCurrentSimon = async () => {
+  const res = await fetch("http://localhost:7890/api/v1/users/me", {
+    method: "GET",
+    credentials: "include",
+  });
+
+  if (!res.ok) throw new Error("Not Authenticated");
+  const data = await res.json();
+  return data;
 };
 
 export const useCurrentSimon = () => {

@@ -1,17 +1,19 @@
 // Simon.js
 export const getCurrentUser = async () => {
   try {
-    const res = await fetch(`${process.env.LOCAL_HOST}/api/v1/users/me`, {
+    const res = await fetch(`http://localhost:7890/api/v1/users/me`, {
       headers: { "Content-Type": "application/json" },
+      method: "GET",
       credentials: "include",
       mode: "cors",
     });
-    const data = await res.json();
-    console.log("getCurrentUser->", data);
+
+    const text = await res.text();
+    console.log("Raw response text: ", text);
 
     if (!res.ok) throw new Error("Not Authenticated");
-    return data;
-    // return res.ok ? data : throw new Error("Not authenticated");
+    const data = await JSON.parse(text);
+    return data.user;
   } catch (error) {
     console.error("getCurrentUser failed:", error);
     return null;
@@ -20,7 +22,7 @@ export const getCurrentUser = async () => {
 
 export const getUserById = async (id) => {
   try {
-    const res = await fetch(`${process.env.LOCAL_HOST}/api/v1/users${id}`, {
+    const res = await fetch(`http://localhost:7890/api/v1/users${id}`, {
       headers: { "Content-Type": "application/json" },
       credentials: "include",
       mode: "cors",
@@ -60,18 +62,12 @@ export const signIn = async (email, password) => {
 };
 
 export const signOut = async () => {
-  const res = await fetch(`http://localhost:7890/api/v1/users`, {
+  const res = await fetch(`http://localhost:7890/api/v1/users/sessions`, {
     method: "DELETE",
     headers: { "Content-Type": "application/json" },
     credentials: "include",
     mode: "cors",
   });
 
-  return res.ok();
-};
-
-export const getTopScores = async () => {
-  const res = await fetch(`${process.env.LOCAL_HOST}/api/v1/top-scores`);
-
-  return res.json();
+  return res.ok;
 };

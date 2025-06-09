@@ -1,18 +1,29 @@
 // app.js
 const cookieParser = require("cookie-parser");
 const express = require("express");
+const session = require("express-session");
+const cors = require("cors");
+const userController = require("./controllers/users");
 
 const app = express();
 
 //Built in middleware
 app.use(express.json());
+app.use(
+  session({
+    secret: process.env.JWT_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: { secure: false },
+  })
+);
 app.use(cookieParser());
 app.use(
   require("cors")({
-    origin: ["http://localhost:3000",],
-    credentials: true
+    origin: "http://localhost:3000",
+    credentials: true,
   })
-)
+);
 
 app.use("/api/v1/users", require("./controllers/users"));
 app.use("/api/v1/top_scores", require("./controllers/top_scores"));

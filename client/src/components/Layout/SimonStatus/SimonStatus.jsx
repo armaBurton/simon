@@ -2,28 +2,39 @@
 import "./SimonStatus.css";
 import { Link } from "react-router-dom";
 import { useCurrentSimon } from "../../../context/SimonProvider";
-import { signOut } from "../../../services/simon";
+import { getCurrentUser, signOut } from "../../../services/simon";
 import { useEffect, useState } from "react";
 
 export const SimonStatus = () => {
-  const simonUser = useCurrentSimon();
+  const { user, setUser } = useCurrentSimon();
 
-  const [thisSimonUser, setThisSimonUser] = useState(simonUser);
+  // const [user, setUser] = useState(user);
 
   useEffect(() => {
-    setThisSimonUser(simonUser);
-  }, [simonUser]);
+    const checkUser = async () => {
+      const user = await getCurrentUser();
+      setUser(user);
+    };
+    checkUser();
+    if (user) console.log(user);
+    // setUser(user);
+  }, []);
 
   const handleLogout = async (e) => {
     e.preventDefault();
-    await signOut();
-    setThisSimonUser(null);
-    window.location.reload();
+    console.log("Logout Clicked");
+
+    // (await signOut()) ? setUser(null) : console.error("Failure to logout.");
+    if (await signOut()) {
+      setUser(null);
+      //   if (window.cookieStore) {}
+      // }
+    }
   };
 
   return (
     <div className="auth-div">
-      {!thisSimonUser?.email ? (
+      {!user ? (
         <>
           <p>
             <Link to="/signup" className="nav-style">
@@ -39,7 +50,7 @@ export const SimonStatus = () => {
       ) : (
         <>
           <p>
-            <Link className="nav-style">hello_{thisSimonUser?.email}</Link>
+            <Link className="nav-style">hello_{user?.email}</Link>
           </p>
           <p>
             <Link to="/signout" className="nav-style" onClick={handleLogout}>
