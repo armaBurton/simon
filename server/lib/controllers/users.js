@@ -124,9 +124,6 @@ module.exports = Router()
       const token = req.cookies[process.env.COOKIE_NAME];
       if (!token) return res.status(401).json({ error: "Not Authenticated" });
 
-      console.log("Cookies:", req.cookies);
-      console.log("JWT Token:", req.cookies[process.env.COOKIE_NAME]);
-
       const payload = jwt.verify(token, process.env.JWT_SECRET);
       res.json({ user: { id: payload.userId, email: payload.email } });
     } catch (error) {

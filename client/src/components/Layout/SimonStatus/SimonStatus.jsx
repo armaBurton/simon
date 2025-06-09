@@ -18,10 +18,6 @@ export const SimonStatus = () => {
     checkUser();
   }, []);
 
-  useEffect(() => {
-    console.log("USER: ", user.user);
-  }, [user]);
-
   const handleLogout = async (e) => {
     e.preventDefault();
     console.log("Logout Clicked");
@@ -36,7 +32,7 @@ export const SimonStatus = () => {
       <Link to="#" className="nav-style">
         high_scores
       </Link>
-      {!user ? (
+      {!user?.user ? (
         <>
           <p>
             <Link to="/signup" className="nav-style">

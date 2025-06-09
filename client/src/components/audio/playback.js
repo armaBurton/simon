@@ -14,7 +14,6 @@ export const usePlayback = () => {
   };
 
   const addHighlight = async (button) => {
-    console.log("Add: ", button);
     switch (button.current.id) {
       case "yellow":
         await button.current.classList.add("yellowHighlight");
@@ -34,7 +33,6 @@ export const usePlayback = () => {
   };
 
   const removeHighlight = async (button) => {
-    console.log("Remove: ", button);
     switch (button.current.id) {
       case "yellow":
         await button.current.classList.remove("yellowHighlight");
@@ -85,7 +83,7 @@ export const usePlayback = () => {
     });
   };
 
-  const playSequence = async (randoPattern, refs, buttonMouseEvents) => {
+  const playSequence = async (randoPattern, refs, cRefs, buttonMouseEvents) => {
     for (let i = 0; i < randoPattern.length; i++) {
       const buttonRef = {
         1: refs.yellowRef,
@@ -95,8 +93,20 @@ export const usePlayback = () => {
       }[randoPattern[i]];
 
       buttonMouseEvents.current.style.pointerEvents = "none";
+
+      Object.values(cRefs).forEach((ref) => {
+        if (ref?.current) {
+          ref.current.style.pointerEvents = "none";
+        }
+      });
+
       await timeout(i, randoPattern, randoPattern.length, setIndex, buttonRef);
       buttonMouseEvents.current.style.pointerEvents = "auto";
+      Object.values(cRefs).forEach((ref) => {
+        if (ref?.current) {
+          ref.current.style.pointerEvents = "auto";
+        }
+      });
     }
   };
 

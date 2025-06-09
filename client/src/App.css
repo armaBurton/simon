@@ -21,17 +21,6 @@
   --vt323-regular: "VT323";
 }
 
-/* 
-
-
-.silkscreen-bold {
-  font-family: "Silkscreen", sans-serif;
-  font-weight: 700;
-  font-style: normal;
-}
-
-*/
-
 * {
   box-sizing: border-box;
   margin: 0;

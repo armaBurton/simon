@@ -9,7 +9,7 @@ export const Main = () => {
   const { user } = useCurrentSimon();
 
   if (!user) return <Navigate to="/signin" />;
-  console.log(user);
+  // console.log(user?.user);
 
   return (
     <section className="mainSection">
