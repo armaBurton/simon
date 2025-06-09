@@ -82,7 +82,7 @@ export const Authenticate = () => {
         </div>
         <div className="formItem buttonContainer">
           <button
-            type="submit"
+            type="button"
             className="row new_player"
             aria-disabled={!email || !password}
             onClick={handleNewPlayer}
@@ -98,7 +98,7 @@ export const Authenticate = () => {
             sign_in
           </button>
         </div>
-        <p className="row">{error}</p>
+        <p className="row errMsg">{error}</p>
       </form>
     </section>
   );

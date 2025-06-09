@@ -97,7 +97,7 @@ export const SignUp = () => {
         </div>
         <div className="formItem buttonContainer">
           <button
-            type="submit"
+            type="button"
             className="row return_user"
             aria-disabled={!email || !password || !confirmPassword}
             onClick={handleReturnUser}
@@ -113,7 +113,7 @@ export const SignUp = () => {
             create_player
           </button>
         </div>
-        <p className="row">{error}</p>
+        <p className="row errMsg">{error}</p>
       </form>
     </section>
   );

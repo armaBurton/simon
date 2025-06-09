@@ -5,12 +5,12 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin-top: 100px;
+  height: calc(100vh - 50px);
 }
 
 .authForm,
 .autoForm {
-  /* width: 25%; */
+  width: 240px;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -130,4 +130,11 @@
 .simonLogo {
   width: 20%;
   margin-bottom: 15px;
+}
+
+.errMsg {
+  width: 260px;
+  height: 20px;
+  display: flex;
+  transform: translate(15px, 0px);
 }

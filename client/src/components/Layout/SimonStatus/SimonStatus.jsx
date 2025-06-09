@@ -17,23 +17,22 @@ export const SimonStatus = () => {
     };
     checkUser();
     if (user) console.log(user);
-    // setUser(user);
   }, []);
 
   const handleLogout = async (e) => {
     e.preventDefault();
     console.log("Logout Clicked");
 
-    // (await signOut()) ? setUser(null) : console.error("Failure to logout.");
     if (await signOut()) {
       setUser(null);
-      //   if (window.cookieStore) {}
-      // }
     }
   };
 
   return (
     <div className="auth-div">
+      <Link to="#" className="nav-style">
+        high_scores
+      </Link>
       {!user ? (
         <>
           <p>

@@ -6,4 +6,11 @@ header {
   align-items: center;
   justify-content: space-between;
   padding: 0 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.simon-style {
+  width: 150px;
 }

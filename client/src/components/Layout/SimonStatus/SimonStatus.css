@@ -2,5 +2,22 @@
 .auth-div {
   display: flex;
   gap: 20px;
-  width: 40%;
+  text-decoration: none;
+}
+
+.nav-style {
+  text-decoration: none;
+}
+
+.nav-style {
+  cursor: pointer;
+  color: var(--bright-blue);
+}
+
+.nav-style:hover {
+  color: var(--bright-green);
+}
+
+.nav-style:active {
+  color: var(--bright-red);
 }
