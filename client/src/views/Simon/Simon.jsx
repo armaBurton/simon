@@ -90,18 +90,16 @@ export const Simon = () => {
             "RANDOPATTERN: ",
             randoPattern[i]
           );
-          if (userPattern[i] !== randoPattern[i] && userPattern.length > 0)
+          if (
+            userPattern[i] !== randoPattern[i] &&
+            userPattern.length > 0 &&
+            userPattern[i] !== undefined
+          ) {
+            setGameOn(false);
             console.log("FAIL");
+            return;
+          }
         }
-        // await userPattern.map((i, p) => {
-        //   console.log(
-        //     "CHECK PATTERN: ",
-        //     userPattern[p],
-        //     "RANDOPATTERN: ",
-        //     randoPattern[i]
-        //   );
-        //   if (userPattern[i] != randoPattern[i]) console.log("FAIL");
-        // });
       }
     };
 
@@ -121,10 +119,6 @@ export const Simon = () => {
     if (playerTurn) handlePlayerTurn();
   };
 
-  const handleGameButton = () => {
-    console.log("HANDLE GAME BUTTON");
-  };
-
   const handlePlayerTurn = () => {};
 
   const handleReset = () => {
@@ -140,44 +134,46 @@ export const Simon = () => {
   };
 
   return (
-    <section className={"mainSection"}>
-      <Header>
-        <SimonStatus />
-      </Header>
-      <div className="button-container">
-        <button
-          className="start-button control-buttons"
-          onClick={handleStart}
-          ref={startRef}
-        >
-          start
-        </button>
-        <button
-          className="reset-button control-buttons"
-          onClick={handleReset}
-          ref={resetRef}
-        >
-          reset
-        </button>
-      </div>
-      <div className="simon-body" ref={buttonMouseEvents}>
-        <Buttons
-          yellowRef={yellowRef}
-          redRef={redRef}
-          blueRef={blueRef}
-          greenRef={greenRef}
-          startRef={startRef}
-        />
-        <div className="center">
-          <img src={simonLogo} alt="simon logo" className="simon_logo" />
-          <div className="score-container">
-            <h2 className="score-label">SCORE</h2>
-            <div className="score-counter">
-              <p className="count">{count}</p>
+    <>
+      <section className={"mainSection"}>
+        <Header>
+          <SimonStatus />
+        </Header>
+        <div className="button-container">
+          <button
+            className="start-button control-buttons"
+            onClick={handleStart}
+            ref={startRef}
+          >
+            start
+          </button>
+          <button
+            className="reset-button control-buttons"
+            onClick={handleReset}
+            ref={resetRef}
+          >
+            reset
+          </button>
+        </div>
+        <div className="simon-body" ref={buttonMouseEvents}>
+          <Buttons
+            yellowRef={yellowRef}
+            redRef={redRef}
+            blueRef={blueRef}
+            greenRef={greenRef}
+            startRef={startRef}
+          />
+          <div className="center">
+            <img src={simonLogo} alt="simon logo" className="simon_logo" />
+            <div className="score-container">
+              <h2 className="score-label">SCORE</h2>
+              <div className="score-counter">
+                <p className="count">{count}</p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
