@@ -3,17 +3,12 @@ import { Navigate, Outlet } from "react-router";
 import { useCurrentSimon } from "../../context/SimonProvider";
 
 export const PrivateRoutes = () => {
-  const simon = useCurrentSimon();
+  const { user } = useCurrentSimon();
 
-  if (simon === null || simon === undefined) return <div>Loading...</div>;
+  if (user === null || user === undefined) return <div>Loading...</div>;
 
-  if (!simon?.email) return <Navigate to="/signin" replace />;
+  if (!user) return <Navigate to="/signin" replace />;
+  if (user) return <Navigate to="/main" replace />;
 
   return <Outlet />;
 };
-
-// export const PrivateRoutes = () => {
-//   const simon = useCurrentSimon();
-
-//   return simon?.email ? <Outlet /> : <Navigate to="/main" />;
-// };

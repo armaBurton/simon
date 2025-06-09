@@ -6,22 +6,14 @@ import { Navigate } from "react-router";
 // import { Navigate, useLocation } from "react-router";
 
 export const Main = () => {
-  const simon = useCurrentSimon();
-  // const location = useLocation();
+  const { user } = useCurrentSimon();
 
-  if (!simon) return <div className="mainSection">Loading...</div>;
-
-  // simon.status = 200;
+  if (!user) return <Navigate to="/signin" />;
+  console.log(user);
 
   return (
     <section className="mainSection">
-      {/* <Simon /> */}
-      {simon?.status === 401 ? (
-        <Navigate to="/signin" replace />
-      ) : (
-        <Simon simon={simon} />
-        // <Simon simon={simon} currentSelected={location.state?.from} />
-      )}
+      <Simon />
     </section>
   );
 };

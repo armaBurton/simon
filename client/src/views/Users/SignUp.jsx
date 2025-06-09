@@ -15,7 +15,7 @@ export const SignUp = () => {
   const { newUser } = useAuth();
 
   useEffect(() => {
-    if (simon?.email) navigate("/simon", { replace: true });
+    if (simon?.email) navigate("/main", { replace: true });
     //eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -23,12 +23,12 @@ export const SignUp = () => {
     try {
       e.preventDefault();
       await newUser({ email, password });
-      navigate("/hidden", { replace: true });
+      navigate("/main", { replace: true });
     } catch (err) {
       setError(err);
       console.error(err);
 
-      navigate("/main", { replace: true });
+      navigate("/signup", { replace: true });
     }
   };
 

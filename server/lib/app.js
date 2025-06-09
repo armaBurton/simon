@@ -9,17 +9,9 @@ const app = express();
 
 //Built in middleware
 app.use(express.json());
-app.use(
-  session({
-    secret: process.env.JWT_SECRET,
-    resave: false,
-    saveUninitialized: false,
-    cookie: { secure: false },
-  })
-);
 app.use(cookieParser());
 app.use(
-  require("cors")({
+  cors({
     origin: "http://localhost:3000",
     credentials: true,
   })

@@ -124,13 +124,22 @@ export const SimonProvider = ({ children }) => {
 
 export const getCurrentSimon = async () => {
   const res = await fetch("http://localhost:7890/api/v1/users/me", {
+    headers: {
+      "Content-Type": "application/json",
+    },
     method: "GET",
     credentials: "include",
+    mode: "cors",
   });
 
-  if (!res.ok) throw new Error("Not Authenticated");
-  const data = await res.json();
-  return data;
+  const text = await res.text();
+  console.log("getCurrentSimon Raw response text: ", text);
+
+  if (!res.ok) throw new Error(JSON.parse(text).error || "Error fetching user");
+  // const data = await res.json();
+  // return data;
+
+  return JSON.parse(text);
 };
 
 export const useCurrentSimon = () => {

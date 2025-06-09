@@ -12,12 +12,15 @@ export const SimonStatus = () => {
 
   useEffect(() => {
     const checkUser = async () => {
-      const user = await getCurrentUser();
-      setUser(user);
+      const currentUser = await getCurrentUser();
+      if (currentUser) setUser(currentUser);
     };
     checkUser();
-    if (user) console.log(user);
   }, []);
+
+  useEffect(() => {
+    console.log("USER: ", user.user);
+  }, [user]);
 
   const handleLogout = async (e) => {
     e.preventDefault();
@@ -49,7 +52,7 @@ export const SimonStatus = () => {
       ) : (
         <>
           <p>
-            <Link className="nav-style">hello_{user?.email}</Link>
+            <Link className="nav-style">hello_{user.user.email}</Link>
           </p>
           <p>
             <Link to="/signout" className="nav-style" onClick={handleLogout}>

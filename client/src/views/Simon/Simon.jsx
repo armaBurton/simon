@@ -6,7 +6,8 @@ import { Buttons } from "../../components/buttons/buttonContainer";
 import { useCurrentSimon } from "../../context/SimonProvider";
 import { usePlayback } from "../../components/audio/playback";
 import simonLogo from "../../assets/simon_white.png";
-import { Nav } from "../Nav/Nav";
+import { Header } from "../../components/Layout/Header/Header";
+import { SimonStatus } from "../../components/Layout/SimonStatus/SimonStatus";
 
 export const Simon = () => {
   const {
@@ -25,6 +26,10 @@ export const Simon = () => {
     user,
     setUser,
   } = useCurrentSimon();
+
+  useEffect(() => {
+    if (count === 0) setRandoPattern([]);
+  }, []);
 
   const yellowRef = useRef(null);
   const redRef = useRef(null);
@@ -69,7 +74,7 @@ export const Simon = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userPattern, randoPattern, count]);
-  if (!user?.email) return <Navigate to="/signin" />;
+  if (!user) return <Navigate to="/signin" />;
   const handleStart = () => {
     setCount(1);
     setRandoPattern([]);
@@ -98,7 +103,9 @@ export const Simon = () => {
 
   return (
     <section className={"mainSection"}>
-      <Nav />
+      <Header>
+        <SimonStatus />
+      </Header>
       <div className="button-container">
         <button className="start-button control-buttons" onClick={handleStart}>
           start

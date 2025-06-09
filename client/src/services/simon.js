@@ -1,23 +1,21 @@
 // Simon.js
 export const getCurrentUser = async () => {
-  try {
-    const res = await fetch(`http://localhost:7890/api/v1/users/me`, {
-      headers: { "Content-Type": "application/json" },
-      method: "GET",
-      credentials: "include",
-      mode: "cors",
-    });
+  const res = await fetch(`http://localhost:7890/api/v1/users/me`, {
+    headers: { "Content-Type": "application/json" },
+    method: "GET",
+    credentials: "include",
+    mode: "cors",
+  });
 
-    const text = await res.text();
-    console.log("Raw response text: ", text);
+  if (res.status === 401) return null;
 
-    if (!res.ok) throw new Error("Not Authenticated");
-    const data = await JSON.parse(text);
-    return data.user;
-  } catch (error) {
-    console.error("getCurrentUser failed:", error);
-    return null;
+  if (!res.ok) {
+    const errorData = await res.json();
+    throw new Error(errorData.error || "Error fetching user");
   }
+
+  const data = await res.json();
+  return data;
 };
 
 export const getUserById = async (id) => {
@@ -49,7 +47,7 @@ export const signUp = async (email, password) => {
 };
 
 export const signIn = async (email, password) => {
-  const res = await fetch(`http://localhost:7890/api/v1/users`, {
+  const res = await fetch(`http://localhost:7890/api/v1/users/login`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     credentials: "include",

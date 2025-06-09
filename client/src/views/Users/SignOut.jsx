@@ -12,7 +12,7 @@ export const SignOut = async () => {
     try {
       await logout()
         .then(() => setUserNull())
-        .finally(() => navigate("/game", { replace: true }));
+        .finally(() => navigate("/signin", { replace: true }));
     } catch (err) {
       console.error(err);
     }

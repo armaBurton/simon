@@ -14,7 +14,7 @@ export const Authenticate = () => {
   const { login } = useAuth();
 
   useEffect(() => {
-    if (simon?.email) navigate("/simon", { replace: true });
+    if (simon?.email) navigate("/main", { replace: true });
     //eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
