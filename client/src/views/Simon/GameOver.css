@@ -1,0 +1,42 @@
+/* GameOver.css */
+.gameOverContainer {
+  height: 80%;
+  aspect-ratio: 1/1;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+
+.gameOver {
+  font-size: 1200%;
+  font-weight: 900;
+  color: var(--bright-green);
+  padding-bottom: 3%;
+  border-top: 6px solid;
+
+  border-image: linear-gradient(
+    to right,
+    var(--bright-green) 0%,
+    var(--bright-green) 25%,
+    var(--bright-red) 25%,
+    var(--bright-red) 50%,
+    var(--bright-yellow) 50%,
+    var(--bright-yellow) 75%,
+    var(--bright-blue) 75%,
+    var(--bright-blue) 100%
+  );
+  border-image-slice: 1;
+}
+
+.yourScore {
+  font-size: 500%;
+  color: var(--bright-green);
+}
+
+.gameOverLogo {
+  width: 25%;
+  margin-bottom: 3%;
+}

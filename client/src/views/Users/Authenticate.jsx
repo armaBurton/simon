@@ -52,7 +52,7 @@ export const Authenticate = () => {
   return (
     <section className="formSection">
       <img src={simonLogo} alt="simon logo" className="simonLogo" />
-      <form onSubmit={() => {}} className="authForm">
+      <form autoComplete="off" onSubmit={() => {}} className="authForm">
         <div className="formItem small">
           <label htmlFor="email"> email </label>
           <input

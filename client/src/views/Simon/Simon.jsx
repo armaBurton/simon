@@ -1,11 +1,12 @@
 import "./Simon.css";
+import "./GameOver.css";
 import { useEffect, useRef } from "react";
-import { Navigate } from "react-router";
+// import { Navigate } from "react-router";
 // import { Link } from "react-router-dom";
 import { Buttons } from "../../components/buttons/buttonContainer";
 import { useCurrentSimon } from "../../context/SimonProvider";
 import { usePlayback } from "../../components/audio/playback";
-import { gameLogic } from "../../components/gameLogic/GameLogic";
+// import { gameLogic } from "../../components/gameLogic/GameLogic";
 import simonLogo from "../../assets/simon_white.png";
 import { Header } from "../../components/Layout/Header/Header";
 import { SimonStatus } from "../../components/Layout/SimonStatus/SimonStatus";
@@ -25,9 +26,9 @@ export const Simon = () => {
     playerTurn,
     setPlayerTurn,
     // index,
-    setIndex,
-    user,
-    setUser,
+    // setIndex,
+    // user,
+    // setUser,
   } = useCurrentSimon();
 
   const skipVerifyRef = useRef(false);
@@ -59,6 +60,7 @@ export const Simon = () => {
     };
 
     runGame();
+    //eslint-disable-next-line react-hooks/exhaustive-deps
   }, [gameOn, playerTurn]);
 
   useEffect(() => {
@@ -73,6 +75,7 @@ export const Simon = () => {
       { startRef, resetRef },
       buttonMouseEvents
     );
+    //eslint-disable-next-line react-hooks/exhaustive-deps
   }, [randoPattern]);
 
   useEffect(() => {
@@ -100,6 +103,7 @@ export const Simon = () => {
         setPlayerTurn(false);
       }, 1000);
     }
+    //eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userPattern]);
 
   const runGameFunctions = async () => {
@@ -142,12 +146,13 @@ export const Simon = () => {
           reset
         </button>
       </div>
-      ,
+
       {gameOn === false && count > 0 ? (
         <>
           <section className="gameOverContainer">
-            <h2>GAME OVER!</h2>
-            <p>You're Score: {count}</p>
+            <img src={simonLogo} alt="simon logo" className="gameOverLogo" />
+            <h2 className="gameOver">GAME OVER!</h2>
+            <p className="yourScore">Your Score: {count}</p>
           </section>
         </>
       ) : (

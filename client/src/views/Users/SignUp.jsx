@@ -55,7 +55,7 @@ export const SignUp = () => {
   return (
     <section className="formSection">
       <img src={simonLogo} alt="simon logo" className="simonLogo" />
-      <form onSubmit={() => {}} className="autoForm">
+      <form autoComplete="off" onSubmit={() => {}} className="autoForm">
         <div className="formItem small">
           <label htmlFor="email">email</label>
           <input
