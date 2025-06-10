@@ -145,10 +145,10 @@ export const Simon = () => {
       ,
       {gameOn === false && count > 0 ? (
         <>
-          <div>
-            <p>YOU LOSE</p>
+          <section className="gameOverContainer">
+            <h2>GAME OVER!</h2>
             <p>You're Score: {count}</p>
-          </div>
+          </section>
         </>
       ) : (
         <div className="simon-body" ref={buttonMouseEvents}>

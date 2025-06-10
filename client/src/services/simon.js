@@ -41,7 +41,11 @@ export const signUp = async (email, password) => {
     body: JSON.stringify({ email, password }),
   });
 
-  if (!res.ok) throw new Error("Signup failed");
+  // if (!res.ok) throw new Error("Signup failed");
+  if (!res.ok) {
+    const errorBody = await res.json();
+    throw new Error(errorBody.error || "Signup Failed");
+  }
 
   return res.json();
 };

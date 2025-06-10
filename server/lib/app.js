@@ -20,8 +20,7 @@ app.use(
 app.use("/api/v1/users", require("./controllers/users"));
 app.use("/api/v1/top_scores", require("./controllers/top_scores"));
 app.use("/", (req, res) => {
-  console.log("Root route hit");
-  res.send('<h1 style="font-family: sans-serif">PeePee PooPoo</h1>');
+  res.send('<h1 style="font-family: sans-serif">simon says...</h1>');
 });
 app.listen(7890, () => console.log("server running on port 7890"));
 

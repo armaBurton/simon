@@ -12,6 +12,7 @@
 .nav-style {
   cursor: pointer;
   color: var(--bright-blue);
+  font-size: 1.25em;
 }
 
 .nav-style:hover {

@@ -29,7 +29,7 @@ export const SimonStatus = () => {
 
   return (
     <div className="auth-div">
-      <Link to="#" className="nav-style">
+      <Link to="/high_scores" className="nav-style">
         high_scores
       </Link>
       {!user?.user ? (

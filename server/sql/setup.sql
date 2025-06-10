@@ -17,18 +17,18 @@ CREATE TABLE top_scores (
 
 CREATE INDEX idx_score_desc ON top_scores (score DESC);
 
-INSERT INTO top_scores (username, score, user_id)
+INSERT INTO top_scores (username, score)
 VALUES
-  ('Donkey Kong', 4, NULL),
-  ('Hamburger Hotdog', 7, NULL),
-  ('Doctor Zhivago', 3, NULL),
-  ('Mega Man', 9, NULL),
-  ('Farts McGee', 2, NULL),
-  ('Monty Python', 5, NULL),
-  ('Princess Pei Pei', 6, NULL),
-  ('Hot Bob', 8, NULL),
-  ('Mad Madame Mim', 1, NULL),
-  ('Holly Golightly', 10, NULL);
+  ('Donkey Kong', 4),
+  ('Hamburger Hotdog', 7),
+  ('Doctor Zhivago', 3),
+  ('Mega Man', 9),
+  ('Farts McGee', 2),
+  ('Monty Python', 5),
+  ('Princess Pei Pei', 6),
+  ('Hot Bob', 8),
+  ('Mad Madame Mim', 1),
+  ('Holly Golightly', 10);
 
 SELECT * FROM top_scores
 ORDER BY score DESC 

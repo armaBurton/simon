@@ -25,7 +25,7 @@ export const SignUp = () => {
       await newUser({ email, password });
       navigate("/main", { replace: true });
     } catch (err) {
-      setError(err);
+      setError(err.message);
       console.error(err);
 
       navigate("/signup", { replace: true });
@@ -68,7 +68,7 @@ export const SignUp = () => {
               setEmail(target.value);
             }}
           />
-        </div>{" "}
+        </div>
         <div className="formItem small">
           <label htmlFor="password">password</label>
           <input
@@ -81,7 +81,7 @@ export const SignUp = () => {
               setPassword(target.value);
             }}
           />
-        </div>{" "}
+        </div>
         <div className="formItem medium">
           <label htmlFor="confirmPassword">password</label>
           <input
@@ -113,8 +113,8 @@ export const SignUp = () => {
             create_player
           </button>
         </div>
-        <p className="row errMsg">{error}</p>
       </form>
+      <p className="row errMsg">{error}</p>
     </section>
   );
 };

@@ -7,6 +7,7 @@ import {
   useState,
 } from "react";
 import { getCurrentUser, signIn, signOut, signUp } from "../services/simon";
+import { getTopScores } from "../services/topScores";
 import { renderView } from "../utils/renderView";
 
 const SimonContext = createContext();
@@ -23,13 +24,16 @@ export const SimonProvider = ({ children }) => {
   const [gameOn, setGameOn] = useState(false);
   const [playerTurn, setPlayerTurn] = useState(false);
   const [index, setIndex] = useState(0);
+  const [topScores, setTopScores] = useState(null);
 
   useEffect(() => {
     let isMounted = true;
     const fetchUser = async () => {
       try {
         const user = await getCurrentUser();
+        const tops = await getTopScores();
         if (isMounted) setUser(user);
+        if (isMounted) setTopScores(tops);
       } catch (err) {
         console.error(err);
       } finally {
@@ -47,6 +51,11 @@ export const SimonProvider = ({ children }) => {
   const login = async ({ email, password }) => {
     try {
       const user = await signIn(email, password);
+      console.log(`*** *** *** *** ***`);
+      console.log(` `);
+      console.log(`>>>50 >>>user-->    `, user);
+      console.log(` `);
+      console.log(`*** *** *** *** ***`);
       setUser(user);
     } catch (err) {
       throw err;
@@ -72,6 +81,9 @@ export const SimonProvider = ({ children }) => {
 
   const value = useMemo(
     () => ({
+      // TOP SCORES
+      topScores,
+      setTopScores,
       // USER
       loading,
       setLoading,

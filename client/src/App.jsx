@@ -14,6 +14,7 @@ import { SignUp } from "./views/Users/SignUp";
 import { PrivateRoutes } from "./components/PrivateRoutes/PrivateRoutes";
 import { Hidden } from "./views/Hidden/Hidden";
 import { Simon } from "./views/Simon/Simon";
+import { HighScores } from "./views/HighScores/HighScores";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,7 @@ const router = createBrowserRouter([
       { path: "signin", element: <Authenticate /> },
       { path: "signup", element: <SignUp /> },
       { path: "main", element: <Main /> },
+      { path: "high_scores", element: <HighScores /> },
       {
         element: <PrivateRoutes />,
         children: [

@@ -1,9 +1,9 @@
 const Router = require("express");
-const authenticate = require("../middleware/authenticate");
+// const authenticate = require("../middleware/authenticate");
 const TopScoreService = require("../services/TopScoreService");
 
 module.exports = Router()
-  .get("/", authenticate, async (req, res, next) => {
+  .get("/", async (req, res, next) => {
     try {
       const topScores = await TopScoreService.getTopScores();
 
@@ -12,7 +12,7 @@ module.exports = Router()
       next(error);
     }
   })
-  .post("/", authenticate, async (req, res, next) => {
+  .post("/", async (req, res, next) => {
     try {
       const topScores = await TopScoreService.addTopScore(req.body);
 

@@ -14,7 +14,7 @@ export const Authenticate = () => {
   const { login } = useAuth();
 
   useEffect(() => {
-    if (simon?.email) navigate("/main", { replace: true });
+    if (simon?.email) navigate("/simon", { replace: true });
     //eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -22,10 +22,10 @@ export const Authenticate = () => {
     try {
       e.preventDefault();
       await login({ email, password });
-      navigate("/hidden", { replace: true });
+      navigate("/main", { replace: true });
     } catch (err) {
-      setError(err);
-      navigate("/simon", { replace: true });
+      setError(err.message);
+      navigate("/signin", { replace: true });
     }
   };
 
@@ -52,8 +52,7 @@ export const Authenticate = () => {
   return (
     <section className="formSection">
       <img src={simonLogo} alt="simon logo" className="simonLogo" />
-
-      <form action="" className="authForm">
+      <form onSubmit={() => {}} className="authForm">
         <div className="formItem small">
           <label htmlFor="email"> email </label>
           <input
@@ -98,8 +97,8 @@ export const Authenticate = () => {
             sign_in
           </button>
         </div>
-        <p className="row errMsg">{error}</p>
       </form>
+      <p className="row errMsg">{error}</p>
     </section>
   );
 };
