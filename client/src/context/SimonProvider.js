@@ -109,6 +109,8 @@ export const SimonProvider = ({ children }) => {
       logout,
     }),
     [
+      //TOP SCORES
+      topScores,
       // USER
       loading,
       user,

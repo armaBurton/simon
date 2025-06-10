@@ -30,6 +30,6 @@ VALUES
   ('Mad Madame Mim', 1, null),
   ('Holly Golightly', 10, null);
 
-SELECT * FROM top_scores
-ORDER BY score DESC 
-LIMIT 10;
+-- SELECT * FROM top_scores
+-- ORDER BY score DESC 
+-- LIMIT 10;

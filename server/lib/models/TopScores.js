@@ -16,8 +16,10 @@ module.exports = class TopScores {
   static async getTopScores() {
     const { rows } = await pool.query(
       `
-      SELECT username, score, created_at
+      SELECT *
       FROM top_scores
+      ORDER BY score DESC
+      LIMIT 10
     `
     );
 
