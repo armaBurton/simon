@@ -2,37 +2,37 @@ import { useEffect, useState } from "react";
 import { useCurrentSimon } from "../../../context/SimonProvider";
 import "../HighScores.css";
 
-export const HighScoreRows = async () => {
-  const { topScores } = useCurrentSimon();
-  const [scores, setScores] = useState();
-
-  // console.log("HighScoreRows, ", topScores);
+export const HighScoreRows = () => {
+  const { topScores } = useCurrentSimon(); // If it's a Promise, we will handle it
+  const [scores, setScores] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // console.log("HighScoreRows: ", topScores);
-    if (topScores instanceof Promise) {
-      topScores
-        .then((res) => {
-          setScores(res);
-        })
-        .catch((error) => {
-          console.error("FAILED TO FETCH SCORES:", error);
-        });
-    }
+    const loadScores = async () => {
+      try {
+        const resolvedScores = await topScores; // wait for the promise
+        setScores(resolvedScores);
+      } catch (error) {
+        console.error("FAILED TO FETCH SCORES:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadScores();
   }, [topScores]);
 
-  if (!topScores || topScores.length === 0)
-    return <div>No Scores Available</div>;
+  if (loading) return <div>Loading scores...</div>;
+  if (!scores || scores.length === 0) return <div>No Scores Available</div>;
 
-  // return <></>;
   return (
     <>
-      {topScores.map((score) => {
+      {scores.map((score) => (
         <div key={score.id} className="scoreRow">
           <h2 className="topScoreName">{score.username}</h2>
           <p className="topScorePoints">{score.score}</p>
-        </div>;
-      })}
+        </div>
+      ))}
     </>
   );
 };
