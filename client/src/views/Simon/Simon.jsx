@@ -30,6 +30,7 @@ export const Simon = () => {
     setUser,
   } = useCurrentSimon();
 
+  const skipVerifyRef = useRef(false);
   const yellowRef = useRef(null);
   const redRef = useRef(null);
   const blueRef = useRef(null);
@@ -37,29 +38,88 @@ export const Simon = () => {
   const startRef = useRef(null);
   const resetRef = useRef(null);
   const buttonMouseEvents = useRef(null);
+  const { playSequence } = usePlayback();
 
   useEffect(() => {
-    setCount(0);
-    setPlayerTurn(false);
-    setGameOn(true);
-  }, []);
+    if (playerTurn) return;
+
+    const runGame = async () => {
+      if (gameOn) {
+        await runGameFunctions();
+        console.log("RANDO PATTERN: ", randoPattern);
+        console.log("GAME ON");
+        setUserPattern([]);
+        setPlayerTurn(true);
+      } else if (!gameOn) {
+        console.log("GAME OFF");
+        setRandoPattern([]);
+        setUserPattern([]);
+        setPlayerTurn(false);
+      }
+    };
+
+    runGame();
+  }, [gameOn, playerTurn]);
 
   useEffect(() => {
-    runGameFunctions();
-    console.log("GAME ON");
-  }, [gameOn]);
+    if (skipVerifyRef.current) {
+      skipVerifyRef.current = false;
+      return;
+    }
+
+    playSequence(
+      randoPattern,
+      { yellowRef, redRef, blueRef, greenRef },
+      { startRef, resetRef },
+      buttonMouseEvents
+    );
+  }, [randoPattern]);
+
+  useEffect(() => {
+    if (skipVerifyRef.current) {
+      skipVerifyRef.current = false;
+      return;
+    }
+    if (!playerTurn || userPattern.length === 0) return;
+
+    const i = userPattern.length - 1;
+
+    if (userPattern[i] !== randoPattern[i]) {
+      console.log("Mismatch");
+      audio();
+      setGameOn(false);
+      setPlayerTurn(false);
+      return;
+    }
+
+    if (userPattern.length === randoPattern.length) {
+      console.log("Pattern complete and correct");
+      setTimeout(() => {
+        setUserPattern([]);
+        setCount((prev) => prev + 1);
+        setPlayerTurn(false);
+      }, 1000);
+    }
+  }, [userPattern]);
 
   const runGameFunctions = async () => {
     await setRandoPattern(randoPatternGenerator(randoPattern));
   };
 
   const handleStart = () => {
-    setCount(0);
-    setPlayerTurn(false);
+    handleReset();
+    setCount(1);
     setGameOn(true);
   };
 
-  const handleReset = () => {};
+  const handleReset = () => {
+    skipVerifyRef.current = true;
+    setGameOn(false);
+    setPlayerTurn(false);
+    setUserPattern([]);
+    setRandoPattern([]);
+    setCount(0);
+  };
 
   return (
     <section className={"mainSection"}>
@@ -84,7 +144,12 @@ export const Simon = () => {
       </div>
       ,
       {gameOn === false && count > 0 ? (
-        <></>
+        <>
+          <div>
+            <p>YOU LOSE</p>
+            <p>You're Score: {count}</p>
+          </div>
+        </>
       ) : (
         <div className="simon-body" ref={buttonMouseEvents}>
           <Buttons
@@ -108,139 +173,3 @@ export const Simon = () => {
     </section>
   );
 };
-
-// useEffect(() => {
-//   if (count === 0) setRandoPattern([]);
-// }, []);
-
-// const yellowRef = useRef(null);
-// const redRef = useRef(null);
-// const blueRef = useRef(null);
-// const greenRef = useRef(null);
-// const startRef = useRef(null);
-// const resetRef = useRef(null);
-// const buttonMouseEvents = useRef(null);
-
-// const { playSequence } = usePlayback();
-
-// useEffect(() => {
-//   // console.log("USER PATTERN: ", userPattern);
-//   // console.log("RANDO PATTERN: ", randoPattern);
-//   // eslint-disable-next-line react-hooks/exhaustive-deps
-// }, [userPattern]);
-
-// useEffect(() => {
-//   playSequence(
-//     randoPattern,
-//     { yellowRef, redRef, blueRef, greenRef },
-//     { startRef, resetRef },
-//     buttonMouseEvents
-//   );
-
-//   // eslint-disable-next-line react-hooks/exhaustive-deps
-// }, [randoPattern]);
-
-// // useEffect(() => {
-// //   if (playerTurn && userPattern.length > 0) {
-// //     if (userPattern.length === randoPattern.length) {
-// //       const isCorrect = userPattern.every(
-// //         (val, i) => val === randoPattern[i]
-// //       );
-// //       if (isCorrect) {
-// //         setCount(count + 1);
-// //         setUserPattern([]);
-// //         // setPlayerTurn(false);
-// //         // runGameFunctions();
-// //       } else {
-// //         console.log("Game Over!");
-// //         handleReset();
-// //       }
-// //     }
-// //   }
-// //   // eslint-disable-next-line react-hooks/exhaustive-deps
-// // }, [userPattern, randoPattern, count]);
-
-// // useEffect(() => {
-// //   const checkPattern = async () => {
-// //     if (playerTurn) {
-// //       for (let i = 0; i < randoPattern.length; i++) {
-// //         // console.log(
-// //         //   "CHECK PATTERN: ",
-// //         //   userPattern[i],
-// //         //   "RANDO PATTERN: ",
-// //         //   randoPattern[i]
-// //         // );
-// //         if (
-// //           userPattern[i] !== randoPattern[i] &&
-// //           userPattern.length > 0 &&
-// //           userPattern[i] !== undefined
-// //         ) {
-// //           setGameOn(false);
-// //           setTimeout(() => {
-// //             audio(null);
-// //             console.log("timeout");
-// //           }, 150);
-// //         }
-// //         if (i === randoPattern.length) {
-// //         }
-// //       }
-// //       setUserPattern([]);
-// //       setPlayerTurn(true);
-// //     }
-// //     setPlayerTurn(false);
-// //   };
-// //   checkPattern();
-// // }, [userPattern]);
-
-// // useEffect(() => {
-// //   if (gameOn && !playerTurn) {
-// //     handleTurn();
-// //     setPlayerTurn(true);
-// //   }
-// // }, [gameOn, playerTurn]);
-
-// // if (!user) return <Navigate to="/signin" />;
-
-// // const handleTurn = async () => {
-// //   console.log("HANDLE TURN");
-// //   // const game = true;
-// //   // let player = false
-// //   await runGameFunctions();
-// //   // gameLogic(randoPattern);
-// //   // player = true;
-// //   setPlayerTurn(false);
-// // };
-
-// // const handleStart = async () => {
-// //   setCount(0);
-// //   setGameOn(true);
-// //   // handleTurn();
-// //   // setPlayerTurn(false);
-// //   // await runGameFunctions();
-// //   // gameLogic(randoPattern);
-// //   // setPlayerTurn(true);
-// //   // handleTurn();
-// //   // count > 0 ? setCount(0) : setCount(count + 1);
-// //   // setGameOn(true);
-// //   // setPlayerTurn(false);
-// //   // if (gameOn === true) handleTurn();
-// //   // gameLogic(randoPattern);
-// //   // setUserPattern([]);
-// //   // runGameFunctions();
-// //   // setPlayerTurn(true);
-// //   // gameLogic(randoPattern);
-// //   // setUserPattern([]);
-// //   // runGameFunctions();
-// //   // setPlayerTurn(true);
-// //   // if (gameOn === true) handleTurn();
-// //   // if (playerTurn) handlePlayerTurn();
-// // };
-
-// // const handleReset = () => {
-// //   setCount(0);
-// //   setRandoPattern([]);
-// //   setUserPattern([]);
-// //   setPlayerTurn(false);
-// //   setGameOn(false);
-// //   setIndex(0);
-// // };
