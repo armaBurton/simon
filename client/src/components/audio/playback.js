@@ -92,7 +92,9 @@ export const usePlayback = () => {
         4: refs.greenRef,
       }[randoPattern[i]];
 
-      buttonMouseEvents.current.style.pointerEvents = "none";
+      if (buttonMouseEvents?.current) {
+        buttonMouseEvents.current.style.pointerEvents = "none";
+      }
 
       Object.values(cRefs).forEach((ref) => {
         if (ref?.current) {
@@ -101,7 +103,11 @@ export const usePlayback = () => {
       });
 
       await timeout(i, randoPattern, randoPattern.length, setIndex, buttonRef);
-      buttonMouseEvents.current.style.pointerEvents = "auto";
+      if (buttonMouseEvents?.current) {
+        buttonMouseEvents.current.style.pointerEvents = "auto";
+      }
+
+      // buttonMouseEvents.current.style.pointerEvents = "auto";
       Object.values(cRefs).forEach((ref) => {
         if (ref?.current) {
           ref.current.style.pointerEvents = "auto";
