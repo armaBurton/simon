@@ -1,6 +1,6 @@
 import "./Simon.css";
 import "./GameOver.css";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 // import { Navigate } from "react-router";
 // import { Link } from "react-router-dom";
 import { Buttons } from "../../components/buttons/buttonContainer";
@@ -12,6 +12,7 @@ import { Header } from "../../components/Layout/Header/Header";
 import { SimonStatus } from "../../components/Layout/SimonStatus/SimonStatus";
 import { randoPatternGenerator } from "../../utils/sharedFunctions";
 import { audio } from "../../components/audio/oscillator";
+import { getTopScores } from "../../services/topScores";
 
 export const Simon = () => {
   const {
@@ -25,6 +26,9 @@ export const Simon = () => {
     setGameOn,
     playerTurn,
     setPlayerTurn,
+    setTopScores,
+    topScores,
+
     // index,
     // setIndex,
     // user,
@@ -40,7 +44,23 @@ export const Simon = () => {
   const resetRef = useRef(null);
   const buttonMouseEvents = useRef(null);
   const { playSequence } = usePlayback();
+  const [highScore, setHighScore] = useState("");
+  const [error, setError] = useState("");
 
+  useEffect(() => {
+    console.log("FETCHING FROM MAIN");
+    const fetchHighScores = async () => {
+      try {
+        const res = await getTopScores();
+
+        setTopScores(res);
+        console.log("HighScore: ", topScores);
+      } catch (error) {}
+    };
+
+    fetchHighScores();
+    //eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   useEffect(() => {
     if (playerTurn) return;
 
@@ -125,6 +145,37 @@ export const Simon = () => {
     setCount(0);
   };
 
+  const checkScores = () => {
+    if (topScores <= 0 || topScores === undefined) {
+      console.log("undefined, or less than or equal to zero");
+      return;
+    }
+    let lowScore = 999;
+    topScores.map((score) => {
+      if (lowScore > score.score) {
+        lowScore = score.score;
+      }
+    });
+
+    if (count > lowScore) {
+      console.log(
+        `*** *** *** *** ***\n`,
+        `>>>158 >>>lowScore, count-->    `,
+        lowScore,
+        count,
+        `\n*** *** *** *** ***`
+      );
+      console.log("NEW TOP SCORE");
+    }
+  };
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    setError("");
+
+    setError("click");
+  };
+
   return (
     <section className={"mainSection"}>
       <Header>
@@ -146,13 +197,39 @@ export const Simon = () => {
           reset
         </button>
       </div>
-
       {gameOn === false && count > 0 ? (
         <>
+          {checkScores()}
           <section className="gameOverContainer">
             <img src={simonLogo} alt="simon logo" className="gameOverLogo" />
             <h2 className="gameOver">GAME OVER!</h2>
             <p className="yourScore">Your Score: {count}</p>
+            <div className="newHighScore">
+              <p className="grats">Congratulations on a new top score!!!</p>
+              <form autoComplete="off" className="highScoreForm">
+                <label className="highScoreLabel" htmlFor="highScore"></label>
+                <input
+                  type="text"
+                  id="highScore"
+                  name="highScore"
+                  placeholder="name"
+                  value={highScore}
+                  onChange={({ target }) => {
+                    setHighScore(target.value);
+                  }}
+                  required
+                />
+                <button
+                  type="submit"
+                  onClick={handleClick}
+                  className="highScoreFormButton"
+                >
+                  add_score
+                </button>
+              </form>
+              <p>{error}</p>
+              {/* </div> */}
+            </div>
           </section>
         </>
       ) : (

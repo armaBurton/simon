@@ -8,28 +8,14 @@
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  border-top: 6px solid;
-
-  border-image: linear-gradient(
-    to right,
-    var(--bright-green) 0%,
-    var(--bright-green) 25%,
-    var(--bright-red) 25%,
-    var(--bright-red) 50%,
-    var(--bright-yellow) 50%,
-    var(--bright-yellow) 75%,
-    var(--bright-blue) 75%,
-    var(--bright-blue) 100%
-  );
-  border-image-slice: 1;
 }
 
 .gameOver {
   font-size: 12vh;
   font-weight: 900;
   color: var(--bright-green);
-  padding-bottom: 3%;
-  border-top: 6px solid;
+  /* padding-bottom: 3%; */
+  border-top: 1vh solid;
 
   border-image: linear-gradient(
     to right,
@@ -53,4 +39,85 @@
 .gameOverLogo {
   width: 25%;
   margin-bottom: 3%;
+}
+
+.newHighScore {
+  /* width: 60%; */
+  /* height: 10%; */
+  /* background-color: fuchsia; */
+  margin-top: 1%;
+  font-size: 3vh;
+  color: fuchsia;
+}
+
+.grats {
+  margin-bottom: 2%;
+  font-size: 3.5vh;
+  color: var(--bright-red);
+}
+
+.highScoreDiv {
+  background-color: var(--bright-green);
+}
+
+.highScoreForm {
+  height: 60%;
+  display: flex;
+  justify-content: space-between;
+  /* visibility: hidden; */
+}
+
+#highScore {
+  height: 70%;
+  width: 70%;
+  background-color: var(--dim-green);
+  /* color: var(--bright-yellow); */
+  padding: 3% 3%;
+  font-size: 3.5vh;
+  border: none;
+  border-radius: 3px;
+  font-weight: 900;
+  caret-color: var(--bright-yellow);
+}
+
+#highScore::placeholder {
+  color: var(--dim-yellow);
+}
+
+#highScore:focus {
+  border: none;
+  outline: none;
+  background-color: var(--bright-green);
+  color: var(--bright-blue);
+}
+
+#highScore:focus::placeholder {
+  color: var(--bright-yellow);
+}
+
+.highScoreFormButton {
+  cursor: pointer;
+  background-color: var(--dim-blue);
+  height: 70%;
+  width: 25%;
+  border: none;
+  border-radius: 3px;
+  font-size: 2.5vh;
+  color: var(--dim-red);
+}
+
+.highScoreFormButton:hover {
+  background-color: var(--bright-blue);
+  color: var(--bright-red);
+}
+
+.highScoreFormButton:active {
+  background-color: var(--press-blue);
+  color: var(--press-red);
+}
+
+.highScoreLabel {
+  visibility: hidden;
+  position: fixed;
+  z-index: -100;
 }
