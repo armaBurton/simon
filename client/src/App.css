@@ -37,3 +37,82 @@ body {
   height: calc(100vh - 50px);
   background-color: orange;
 }
+
+input {
+  width: 100%;
+  border: none;
+  outline: none;
+  display: flex;
+  align-items: center;
+  padding: 5px 8px;
+  border-radius: 3px;
+  caret-shape: bar;
+  caret-color: black;
+  /* font-weight: 900; */
+  font-size: 1.25em;
+}
+
+.inputRed {
+  background-color: var(--press-red);
+  color: var(--dim-blue);
+  box-shadow: 0 0 0.5vh var(--dim-green);
+  /* border: var(--bright-red) solid 1px; */
+}
+
+.inputRed:focus,
+.inputRed:focus::placeholder {
+  background-color: var(--bright-red);
+  color: var(--bright-blue);
+}
+
+.inputRed::placeholder {
+  color: var(--press-blue);
+}
+
+.inputYellow {
+  background-color: var(--press-yellow);
+  box-shadow: 0 0 0.5vh var(--dim-blue);
+  color: var(--dim-red);
+}
+
+.inputYellow:focus,
+.inputYellow:focus::placeholder {
+  background-color: var(--bright-yellow);
+  color: var(--bright-green);
+}
+
+.inputYellow::placeholder {
+  color: var(--press-red);
+}
+
+.inputBlue {
+  background-color: var(--press-blue);
+  box-shadow: 0 0 0.5vh var(--dim-green);
+  color: var(--dim-yellow);
+}
+
+.inputBlue:focus,
+.inputBlue:focus::placeholder {
+  background-color: var(--bright-blue);
+  color: var(--bright-yellow);
+}
+
+.inputBlue::placeholder {
+  color: var(--press-red);
+}
+
+.inputGreen {
+  background-color: var(--press-green);
+  box-shadow: 0 0 0.5vh var(--dim-blue);
+  color: var(--dim-red);
+}
+
+.inputGreen:focus,
+.inputGreen:focus::placeholder {
+  background-color: var(--bright-green);
+  color: var(--bright-red);
+}
+
+.inputGreen::placeholder {
+  color: var(--press-yellow);
+}

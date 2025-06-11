@@ -54,10 +54,11 @@ export const Authenticate = () => {
       <img src={simonLogo} alt="simon logo" className="simonLogo" />
       <form autoComplete="off" onSubmit={() => {}} className="authForm">
         <div className="formItem small">
-          <label htmlFor="email"> email </label>
+          {/* <label htmlFor="email"> email </label> */}
           <input
             type="text"
             id="email"
+            className="inputYellow"
             name="email"
             placeholder="email"
             value={email}
@@ -67,10 +68,11 @@ export const Authenticate = () => {
           />
         </div>
         <div className="formItem big">
-          <label htmlFor="password"> password </label>
+          {/* <label htmlFor="password"> password </label> */}
           <input
             type="password"
             id="password"
+            className="inputRed"
             name="password"
             placeholder="password"
             value={password}

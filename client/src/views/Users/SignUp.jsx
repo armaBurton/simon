@@ -57,10 +57,11 @@ export const SignUp = () => {
       <img src={simonLogo} alt="simon logo" className="simonLogo" />
       <form autoComplete="off" onSubmit={() => {}} className="autoForm">
         <div className="formItem small">
-          <label htmlFor="email">email</label>
+          {/* <label htmlFor="email">email</label> */}
           <input
             type="email"
             id="email"
+            className="inputGreen"
             name="email"
             placeholder="email"
             value={email}
@@ -70,11 +71,12 @@ export const SignUp = () => {
           />
         </div>
         <div className="formItem small">
-          <label htmlFor="password">password</label>
+          {/* <label htmlFor="password">password</label> */}
           <input
             type="password"
             id="password"
             name="password"
+            className="inputRed"
             placeholder="password"
             value={password}
             onChange={({ target }) => {
@@ -83,12 +85,13 @@ export const SignUp = () => {
           />
         </div>
         <div className="formItem medium">
-          <label htmlFor="confirmPassword">password</label>
+          {/* <label htmlFor="confirmPassword">password</label> */}
           <input
             type="password"
             id="confirmPassword"
+            className="inputBlue"
             name="confirmPassword"
-            placeholder="confirm_password"
+            placeholder="password"
             value={confirmPassword}
             onChange={({ target }) => {
               setConfirmPassword(target.value);

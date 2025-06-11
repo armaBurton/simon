@@ -19,14 +19,14 @@ INSERT INTO top_scores (username, score)
 VALUES
   ('Donkey Kong', 4),
   ('Hamburger Hotdog', 7),
-  ('Doctor Zhivago', 3),
+  ('Pooger Bunka', 3),
   ('Mega Man', 9),
   ('Farts McGee', 2),
   ('Monty Python', 5),
   ('Princess Pei Pei', 6),
   ('Hot Bob', 8),
   ('Mad Madame Mim', 11),
-  ('Holly Golightly', 10);
+  ('Boot Snake', 10);
 
 -- SELECT * FROM top_scores
 -- ORDER BY score DESC 

@@ -19,29 +19,9 @@
 .scoresTitle {
   font-size: 3em;
   font-weight: 900;
-}
-
-.scoreRow {
   width: 60%;
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  padding: 5px 20px;
-}
-
-.scoreRow:nth-child(odd) {
-  background-color: var(--bright-yellow);
-  color: orange;
-}
-
-.topScoreName,
-.topScorePoints {
-  font-size: 2em;
-  font-weight: 900;
-}
-
-.scoreRow:first-of-type {
-  border-top: 4px solid;
+  text-align: center;
+  border-bottom: 4px solid;
 
   border-image: linear-gradient(
     to right,
@@ -55,24 +35,52 @@
     var(--bright-blue) 100%
   );
   border-image-slice: 1;
-  padding-top: 15px;
-  margin-top: 15px;
+  padding-bottom: 10px;
+}
+
+.scoreRow {
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 5px 20px;
+  background-color: var(--bright-blue);
+  color: orange;
+  /* color: var(--bright-yellow); */
+}
+
+.scoreRow:nth-child(odd) {
+  background-color: orange;
+  color: var(--bright-blue);
+  /* color: var(--bright-green); */
+}
+
+.scoreRow:first-of-type {
+  /* padding-top: 15px; */
+  margin-top: 25px;
+}
+
+.topScoreName,
+.topScorePoints {
+  font-size: 2em;
+  font-weight: 900;
 }
 
 .backToSimon {
   margin-top: 3vh;
   cursor: pointer;
-  background-color: var(--bright-blue);
+  background-color: var(--bright-green);
   min-height: 10%;
   width: 15%;
   border: none;
   border-radius: 3px;
-  font-size: 2.5vh;
+  font-size: 3vh;
   color: var(--bright-red);
+  /* color: orange; */
 }
 
 .backToSimon:hover {
-  background-color: var(--bright-green);
+  background-color: var(--bright-blue);
   color: var(--bright-yellow);
 }
 

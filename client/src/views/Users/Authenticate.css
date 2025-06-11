@@ -8,6 +8,12 @@
   height: calc(100vh - 50px);
 }
 
+#password,
+#email {
+  width: 100%;
+  /* height: 40%; */
+}
+
 .authForm,
 .autoForm {
   width: 240px;
@@ -33,6 +39,7 @@
 }
 
 .formItem {
+  width: 100%;
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
