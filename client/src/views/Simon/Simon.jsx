@@ -41,7 +41,7 @@ export const Simon = () => {
   const [username, setUsername] = useState("");
   const [error, setError] = useState("");
   const [lowScore, setLowScore] = useState(999);
-  // const [score, setScore] = useState();
+  const [submitted, setSubmitted] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -135,6 +135,7 @@ export const Simon = () => {
 
   const handleReset = () => {
     skipVerifyRef.current = true;
+    setSubmitted(false);
     setError(" ");
     setGameOn(false);
     setPlayerTurn(false);
@@ -161,6 +162,7 @@ export const Simon = () => {
   const handleClick = (e) => {
     e.preventDefault();
     setError("");
+
     if (!count) {
       setError("Error processing score");
     } else if (!username) {
@@ -174,6 +176,7 @@ export const Simon = () => {
   const handleSubmit = async (e) => {
     try {
       e.preventDefault();
+      setSubmitted(true);
       const num = count;
       console.log("Simon.jsx", username, num);
       await addHighScore({ username, score: num });
@@ -182,6 +185,16 @@ export const Simon = () => {
       setError(err.message);
       console.error(err);
     }
+  };
+
+  const isSubmitted = () => {
+    return isSubmitted ? true : false;
+  };
+
+  const highScores = (e) => {
+    e.preventDefault();
+
+    navigate("/high_scores", { replace: true });
   };
 
   return (
@@ -211,7 +224,7 @@ export const Simon = () => {
             <img src={simonLogo} alt="simon logo" className="gameOverLogo" />
             <h2 className="gameOver">GAME OVER!</h2>
             <p className="yourScore">Your Score: {count}</p>
-            {checkScores() ? (
+            {checkScores() && !isSubmitted() ? (
               <div className="newHighScore">
                 <p className="grats">Congratulations on a new top score!!!</p>
                 <form autoComplete="off" className="highScoreForm">
@@ -238,7 +251,13 @@ export const Simon = () => {
                 <p className="highScoreError">{error}</p>
               </div>
             ) : (
-              <></>
+              <button
+                type="text"
+                onClick={highScores}
+                className="goToHighScores"
+              >
+                high scores
+              </button>
             )}
           </section>
         </>

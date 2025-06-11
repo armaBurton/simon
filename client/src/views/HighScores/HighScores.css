@@ -36,6 +36,18 @@
   );
   border-image-slice: 1;
   padding-bottom: 10px;
+  color: var(--bright-yellow);
+}
+
+.text3d {
+  text-shadow: -1px -1px 1px var(--bright-blue),
+    -2px -2px 1px var(--bright-blue), -3px -3px 1px var(--bright-blue),
+    -4px -4px 1px var(--bright-blue), -5px -5px 1px var(--bright-red),
+    -6px -6px 1px var(--bright-red), -7px -7px 1px var(--bright-red),
+    -8px -8px 1px var(--bright-red), -8px -8px 1px var(--bright-green),
+    -9px -9px 1px var(--bright-green), -10px -10px 1px var(--bright-green),
+    -11px -11px 1px var(--bright-green), -1px 1px 1px var(--bright-blue),
+    1px -1px 1px var(--bright-blue), 1px 1px 1px var(--bright-blue);
 }
 
 .scoreRow {

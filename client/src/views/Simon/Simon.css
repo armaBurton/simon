@@ -209,24 +209,30 @@
 
 .start-button {
   background-color: var(--dim-green);
+  color: var(--dim-blue);
 }
 
 .start-button:hover {
   background-color: var(--bright-green);
+  color: var(--bright-blue);
 }
 
 .start-button:active {
   background-color: var(--press-green);
+  color: var(--press-blue);
 }
 
 .reset-button {
   background-color: var(--dim-red);
+  color: var(--dim-yellow);
 }
 
 .reset-button:hover {
   background-color: var(--bright-red);
+  color: var(--bright-yellow);
 }
 
 .reset-button:active {
   background-color: var(--press-red);
+  color: var(--press-yellow);
 }

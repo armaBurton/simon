@@ -52,11 +52,15 @@ input {
   font-size: 1.25em;
 }
 
+button {
+  border: none;
+  outline: none;
+}
+
 .inputRed {
   background-color: var(--press-red);
   color: var(--dim-blue);
-  box-shadow: 0 0 0.5vh var(--dim-green);
-  /* border: var(--bright-red) solid 1px; */
+  border: 1px solid var(--press-green);
 }
 
 .inputRed:focus,
@@ -71,7 +75,7 @@ input {
 
 .inputYellow {
   background-color: var(--press-yellow);
-  box-shadow: 0 0 0.5vh var(--dim-blue);
+  border: 1px solid var(--press-green);
   color: var(--dim-red);
 }
 
@@ -87,7 +91,8 @@ input {
 
 .inputBlue {
   background-color: var(--press-blue);
-  box-shadow: 0 0 0.5vh var(--dim-green);
+  border: 1px solid var(--dim-blue);
+
   color: var(--dim-yellow);
 }
 
@@ -103,7 +108,8 @@ input {
 
 .inputGreen {
   background-color: var(--press-green);
-  box-shadow: 0 0 0.5vh var(--dim-blue);
+  border: 1px solid var(--bright-green);
+
   color: var(--dim-red);
 }
 

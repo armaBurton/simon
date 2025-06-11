@@ -129,3 +129,25 @@
   color: var(--bright-blue);
   text-align: baseline;
 }
+
+.goToHighScores {
+  cursor: pointer;
+  border: none;
+  padding: 12px 8px;
+  margin-top: 5%;
+  border-radius: 3px;
+  font-size: 1.35em;
+  background-color: var(--dim-red);
+  color: var(--dim-yellow);
+  outline: none;
+}
+
+.goToHighScores:hover {
+  background-color: var(--bright-blue);
+  color: var(--bright-green);
+}
+
+.goToHighScores:active {
+  background-color: var(--press-yellow);
+  color: var(--press-red);
+}

@@ -94,6 +94,7 @@
 
 .new_player {
   background-color: var(--bright-blue);
+  color: var(--bright-yellow);
 }
 
 .new_player:hover {
@@ -107,7 +108,7 @@
 .return_user {
   cursor: pointer;
   background-color: var(--bright-red);
-  color: var(--bright-blue);
+  color: var(--bright-green);
 }
 
 .return_user:hover {
@@ -121,7 +122,7 @@
 .create_player {
   cursor: pointer;
   background-color: var(--bright-yellow);
-  color: var(--bright-blue);
+  color: var(--bright-green);
 }
 
 .create_player:hover {

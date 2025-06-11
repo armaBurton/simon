@@ -39,7 +39,8 @@ export const HighScores = () => {
         <SimonStatus />
       </Header>
       <div className="topScoresContainer">
-        <h1 className="scoresTitle">Top-Scores</h1>
+        {/* <h1 className="scoresTitle">Top-Scores</h1> */}
+        <h1 className="scoresTitle text3d">top_scores</h1>
         <HighScoreRows />
       </div>
       {!user ? (
