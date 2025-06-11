@@ -224,7 +224,7 @@ export const Simon = () => {
             <img src={simonLogo} alt="simon logo" className="gameOverLogo" />
             <h2 className="gameOver">GAME OVER!</h2>
             <p className="yourScore">Your Score: {count}</p>
-            {checkScores() && !isSubmitted() ? (
+            {checkScores() && isSubmitted() ? (
               <div className="newHighScore">
                 <p className="grats">Congratulations on a new top score!!!</p>
                 <form autoComplete="off" className="highScoreForm">
