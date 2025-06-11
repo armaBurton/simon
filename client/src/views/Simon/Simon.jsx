@@ -1,18 +1,16 @@
 import "./Simon.css";
 import "./GameOver.css";
 import { useEffect, useRef, useState } from "react";
-// import { Navigate } from "react-router";
-// import { Link } from "react-router-dom";
 import { Buttons } from "../../components/buttons/buttonContainer";
 import { useCurrentSimon } from "../../context/SimonProvider";
 import { usePlayback } from "../../components/audio/playback";
-// import { gameLogic } from "../../components/gameLogic/GameLogic";
 import simonLogo from "../../assets/simon_white.png";
 import { Header } from "../../components/Layout/Header/Header";
 import { SimonStatus } from "../../components/Layout/SimonStatus/SimonStatus";
 import { randoPatternGenerator } from "../../utils/sharedFunctions";
 import { audio } from "../../components/audio/oscillator";
 import { getTopScores } from "../../services/topScores";
+import { useNavigate } from "react-router";
 
 export const Simon = () => {
   const {
@@ -28,11 +26,7 @@ export const Simon = () => {
     setPlayerTurn,
     setTopScores,
     topScores,
-
-    // index,
-    // setIndex,
-    // user,
-    // setUser,
+    addHighScore,
   } = useCurrentSimon();
 
   const skipVerifyRef = useRef(false);
@@ -47,7 +41,8 @@ export const Simon = () => {
   const [username, setUsername] = useState("");
   const [error, setError] = useState("");
   const [lowScore, setLowScore] = useState(999);
-  const [score, setScore] = useState();
+  // const [score, setScore] = useState();
+  const navigate = useNavigate();
 
   useEffect(() => {
     console.log("FETCHING FROM MAIN");
@@ -149,6 +144,7 @@ export const Simon = () => {
   };
 
   const checkScores = () => {
+    if (gameOn) return;
     if (topScores <= 0 || topScores === undefined) {
       console.log("undefined, or less than or equal to zero");
       return;
@@ -169,6 +165,22 @@ export const Simon = () => {
       setError("Error processing score");
     } else if (!username) {
       setError("You must submit a username");
+    } else {
+      setError("");
+      handleSubmit(e);
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    try {
+      e.preventDefault();
+      const num = count;
+      console.log("Simon.jsx", username, num);
+      await addHighScore({ username, score: num });
+      navigate("/high_scores", { replace: true });
+    } catch (err) {
+      setError(err.message);
+      console.error(err);
     }
   };
 

@@ -14,6 +14,7 @@ module.exports = Router()
   })
   .post("/", async (req, res, next) => {
     try {
+      console.log("top_scores", req.body);
       const topScores = await TopScoreService.addTopScore(req.body);
 
       res.json(topScores);

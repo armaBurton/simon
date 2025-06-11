@@ -49,8 +49,9 @@ export const SimonProvider = ({ children }) => {
 
   const addHighScore = async ({ username, score }) => {
     try {
-      const topScore = await getTopScores(username, score);
-      addTopScore(topScore);
+      console.log("addHighScore:", username, score);
+      const topScore = await addTopScore(username, score);
+      setTopScores(topScore);
     } catch (err) {
       console.error(err);
     }

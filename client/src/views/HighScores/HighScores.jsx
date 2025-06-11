@@ -1,15 +1,17 @@
 // HighScores.jsx
 import "./HighScores.css";
 import { useEffect, useState } from "react";
-// import { useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 import { getTopScores } from "../../services/topScores";
-import { useCurrentSimon } from "../../context/SimonProvider";
+import { useCurrentSimon, user } from "../../context/SimonProvider";
 import { Header } from "../../components/Layout/Header/Header";
 import { SimonStatus } from "../../components/Layout/SimonStatus/SimonStatus";
 import { HighScoreRows } from "./HighScoreRows/HighScoreRows";
+// import { user } from "../../context/SimonProvider"
 
 export const HighScores = () => {
-  const { topScores, setTopScores } = useCurrentSimon();
+  const { user, topScores, setTopScores } = useCurrentSimon();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchHighScores = async () => {
@@ -25,6 +27,12 @@ export const HighScores = () => {
     //eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const handleClick = (e) => {
+    e.preventDefault();
+
+    navigate("/simon", { replace: true });
+  };
+
   return (
     <section className="topScoresSection">
       <Header>
@@ -34,6 +42,13 @@ export const HighScores = () => {
         <h1 className="scoresTitle">Top-Scores</h1>
         <HighScoreRows />
       </div>
+      {!user ? (
+        () => {}
+      ) : (
+        <button onClick={handleClick} className="backToSimon">
+          simon
+        </button>
+      )}
     </section>
   );
 };

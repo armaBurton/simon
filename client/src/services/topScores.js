@@ -18,6 +18,7 @@ export const getTopScores = async () => {
 };
 
 export const addTopScore = async (username, score) => {
+  console.log("addTopScore", username, score);
   try {
     const res = await fetch(`http://localhost:7890/api/v1/top_scores`, {
       method: "POST",

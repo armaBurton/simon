@@ -58,3 +58,25 @@
   padding-top: 15px;
   margin-top: 15px;
 }
+
+.backToSimon {
+  margin-top: 3vh;
+  cursor: pointer;
+  background-color: var(--bright-blue);
+  min-height: 10%;
+  width: 15%;
+  border: none;
+  border-radius: 3px;
+  font-size: 2.5vh;
+  color: var(--bright-red);
+}
+
+.backToSimon:hover {
+  background-color: var(--bright-green);
+  color: var(--bright-yellow);
+}
+
+.backToSimon:active {
+  background-color: var(--bright-red);
+  color: var(--bright-green);
+}

@@ -16,6 +16,10 @@ app.use(
     credentials: true,
   })
 );
+app.use((req, res, next) => {
+  console.log(`${req.method} ${req.url}`);
+  next();
+});
 
 app.use("/api/v1/users", require("./controllers/users"));
 app.use("/api/v1/top_scores", require("./controllers/top_scores"));

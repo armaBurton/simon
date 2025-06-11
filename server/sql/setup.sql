@@ -10,25 +10,23 @@ CREATE TABLE users (
 CREATE TABLE top_scores (
   id BIGSERIAL PRIMARY KEY,
   username TEXT NOT NULL,
-  score INT NOT NULL CHECK (score >= 0),
-  user_id BIGINT REFERENCES users(id),
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  score INT NOT NULL CHECK (score >= 0)
 );
 
 CREATE INDEX idx_score_desc ON top_scores (score DESC);
 
-INSERT INTO top_scores (username, score, created_at)
+INSERT INTO top_scores (username, score)
 VALUES
-  ('Donkey Kong', 4, null),
-  ('Hamburger Hotdog', 7, null),
-  ('Doctor Zhivago', 3, null),
-  ('Mega Man', 9, null),
-  ('Farts McGee', 2, null),
-  ('Monty Python', 5, null),
-  ('Princess Pei Pei', 6, null),
-  ('Hot Bob', 8, null),
-  ('Mad Madame Mim', 11, null),
-  ('Holly Golightly', 10, null);
+  ('Donkey Kong', 4),
+  ('Hamburger Hotdog', 7),
+  ('Doctor Zhivago', 3),
+  ('Mega Man', 9),
+  ('Farts McGee', 2),
+  ('Monty Python', 5),
+  ('Princess Pei Pei', 6),
+  ('Hot Bob', 8),
+  ('Mad Madame Mim', 11),
+  ('Holly Golightly', 10);
 
 -- SELECT * FROM top_scores
 -- ORDER BY score DESC 

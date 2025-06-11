@@ -26,15 +26,16 @@ module.exports = class TopScores {
     return rows.map((row) => new TopScores(row));
   }
 
-  static async addTopScore({ username, score, userId }) {
+  static async addTopScore({ username, score }) {
     const { rows } = await pool.query(
       `
-      INSERT INTO secrets (username, score, user_id)
-      VALUES ($1, $2, $3)
+      INSERT INTO top_scores (username, score)
+      VALUES ($1, $2)
       RETURNING *
-    `[(username, score, userId)]
+    `,
+      [username, score]
     );
 
-    return new TopScores(rows[0]);
+    return rows.map((row) => new TopScores(row));
   }
 };
