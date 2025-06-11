@@ -44,8 +44,10 @@ export const Simon = () => {
   const resetRef = useRef(null);
   const buttonMouseEvents = useRef(null);
   const { playSequence } = usePlayback();
-  const [highScore, setHighScore] = useState("");
+  const [username, setUsername] = useState("");
   const [error, setError] = useState("");
+  const [lowScore, setLowScore] = useState(999);
+  const [score, setScore] = useState();
 
   useEffect(() => {
     console.log("FETCHING FROM MAIN");
@@ -138,6 +140,7 @@ export const Simon = () => {
 
   const handleReset = () => {
     skipVerifyRef.current = true;
+    setError(" ");
     setGameOn(false);
     setPlayerTurn(false);
     setUserPattern([]);
@@ -150,30 +153,23 @@ export const Simon = () => {
       console.log("undefined, or less than or equal to zero");
       return;
     }
-    let lowScore = 999;
     topScores.map((score) => {
       if (lowScore > score.score) {
-        lowScore = score.score;
+        setLowScore(score.score);
       }
     });
 
-    if (count > lowScore) {
-      console.log(
-        `*** *** *** *** ***\n`,
-        `>>>158 >>>lowScore, count-->    `,
-        lowScore,
-        count,
-        `\n*** *** *** *** ***`
-      );
-      console.log("NEW TOP SCORE");
-    }
+    return count > lowScore ? true : false;
   };
 
   const handleClick = (e) => {
     e.preventDefault();
     setError("");
-
-    setError("click");
+    if (!count) {
+      setError("Error processing score");
+    } else if (!username) {
+      setError("You must submit a username");
+    }
   };
 
   return (
@@ -199,37 +195,39 @@ export const Simon = () => {
       </div>
       {gameOn === false && count > 0 ? (
         <>
-          {checkScores()}
           <section className="gameOverContainer">
             <img src={simonLogo} alt="simon logo" className="gameOverLogo" />
             <h2 className="gameOver">GAME OVER!</h2>
             <p className="yourScore">Your Score: {count}</p>
-            <div className="newHighScore">
-              <p className="grats">Congratulations on a new top score!!!</p>
-              <form autoComplete="off" className="highScoreForm">
-                <label className="highScoreLabel" htmlFor="highScore"></label>
-                <input
-                  type="text"
-                  id="highScore"
-                  name="highScore"
-                  placeholder="name"
-                  value={highScore}
-                  onChange={({ target }) => {
-                    setHighScore(target.value);
-                  }}
-                  required
-                />
-                <button
-                  type="submit"
-                  onClick={handleClick}
-                  className="highScoreFormButton"
-                >
-                  add_score
-                </button>
-              </form>
-              <p>{error}</p>
-              {/* </div> */}
-            </div>
+            {checkScores() ? (
+              <div className="newHighScore">
+                <p className="grats">Congratulations on a new top score!!!</p>
+                <form autoComplete="off" className="highScoreForm">
+                  <label className="highScoreLabel" htmlFor="highScore"></label>
+                  <input
+                    type="text"
+                    id="highScore"
+                    name="highScore"
+                    placeholder="name"
+                    value={username}
+                    onChange={({ target }) => {
+                      setUsername(target.value);
+                    }}
+                    required
+                  />
+                  <button
+                    type="submit"
+                    onClick={handleClick}
+                    className="highScoreFormButton"
+                  >
+                    add_score
+                  </button>
+                </form>
+                <p className="highScoreError">{error}</p>
+              </div>
+            ) : (
+              <></>
+            )}
           </section>
         </>
       ) : (

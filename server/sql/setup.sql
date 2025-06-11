@@ -27,7 +27,7 @@ VALUES
   ('Monty Python', 5, null),
   ('Princess Pei Pei', 6, null),
   ('Hot Bob', 8, null),
-  ('Mad Madame Mim', 1, null),
+  ('Mad Madame Mim', 11, null),
   ('Holly Golightly', 10, null);
 
 -- SELECT * FROM top_scores

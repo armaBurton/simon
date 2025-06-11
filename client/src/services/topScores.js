@@ -16,3 +16,24 @@ export const getTopScores = async () => {
     console.error(error);
   }
 };
+
+export const addTopScore = async (username, score) => {
+  try {
+    const res = await fetch(`http://localhost:7890/api/v1/top_scores`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+      mode: "cors",
+      body: JSON.stringify({ username, score }),
+    });
+
+    if (!res.ok) {
+      const errorBody = await res.json();
+      throw new Error(errorBody.error || "Add to Top Scores Failed");
+    }
+
+    return res.json();
+  } catch (err) {
+    console.error(err);
+  }
+};

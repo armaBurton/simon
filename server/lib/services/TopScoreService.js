@@ -7,8 +7,8 @@ module.exports = class TopScoreService {
     return topScores;
   }
 
-  static async addTopScore({ email, score, userId }) {
-    const topScore = await Secret.addSecret({ email, score, userId });
+  static async addTopScore({ username, score }) {
+    const topScore = await TopScores.addTopScore({ username, score });
 
     return topScore;
   }

@@ -42,12 +42,11 @@
 }
 
 .newHighScore {
-  /* width: 60%; */
-  /* height: 10%; */
-  /* background-color: fuchsia; */
   margin-top: 1%;
   font-size: 3vh;
-  color: fuchsia;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .grats {
@@ -62,6 +61,7 @@
 
 .highScoreForm {
   height: 60%;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   /* visibility: hidden; */
@@ -114,10 +114,18 @@
 .highScoreFormButton:active {
   background-color: var(--press-blue);
   color: var(--press-red);
+  outline: none;
 }
 
 .highScoreLabel {
   visibility: hidden;
   position: fixed;
   z-index: -100;
+}
+
+.highScoreError {
+  margin-top: 3%;
+  line-height: 0%;
+  color: var(--bright-blue);
+  text-align: baseline;
 }

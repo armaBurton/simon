@@ -7,7 +7,7 @@ import {
   useState,
 } from "react";
 import { getCurrentUser, signIn, signOut, signUp } from "../services/simon";
-import { getTopScores } from "../services/topScores";
+import { getTopScores, addTopScore } from "../services/topScores";
 import { renderView } from "../utils/renderView";
 
 const SimonContext = createContext();
@@ -47,15 +47,19 @@ export const SimonProvider = ({ children }) => {
     };
   }, []);
 
+  const addHighScore = async ({ username, score }) => {
+    try {
+      const topScore = await getTopScores(username, score);
+      addTopScore(topScore);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   // USER AUTH FUNCTIONS
   const login = async ({ email, password }) => {
     try {
       const user = await signIn(email, password);
-      console.log(`*** *** *** *** ***`);
-      console.log(` `);
-      console.log(`>>>50 >>>user-->    `, user);
-      console.log(` `);
-      console.log(`*** *** *** *** ***`);
       setUser(user);
     } catch (err) {
       throw err;
@@ -107,6 +111,7 @@ export const SimonProvider = ({ children }) => {
       newUser,
       setUserNull,
       logout,
+      addHighScore,
     }),
     [
       //TOP SCORES
